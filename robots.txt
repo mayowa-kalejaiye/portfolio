@@ -1,6 +1,18 @@
 # Allow all crawlers
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: *.pdf$
+
+# Specific crawlers
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
 
 # Sitemap location
 Sitemap: https://mayowa-kalejaiye.vercel.app/sitemap.xml

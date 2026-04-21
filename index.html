@@ -22,9 +22,14 @@
 <!-- SEO Meta Tags -->
 <meta name="canonical" href="https://mayowa-kalejaiye.vercel.app/">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<meta name="keywords" content="software engineer, AI engineer, full-stack developer, scalable systems, portfolio">
+<meta name="keywords" content="software engineer, AI engineer, full-stack developer, scalable systems, portfolio, Next.js, FastAPI, Django, machine learning">
 <meta name="author" content="Mayowa Kalejaiye">
 <meta name="theme-color" content="#050505">
+<meta name="og:locale" content="en_US">
+<link rel="alternate" hreflang="en" href="https://mayowa-kalejaiye.vercel.app/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
@@ -47,6 +52,42 @@
     "name": "Mayowa Kalejaiye",
     "description": "Software & AI Engineering Services"
   }
+}
+</script>
+
+<!-- Project Portfolio Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "My Portfolio Projects",
+  "description": "Selected projects showcasing software and AI engineering expertise",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "PinPoint",
+      "description": "Real-time delivery tracking platform with geolocation APIs",
+      "url": "https://pinpnt.vercel.app",
+      "keywords": "Next.js, Firebase, Real-time tracking"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ClosetAI",
+      "description": "AI-powered wardrobe recommendation platform using computer vision and LLMs",
+      "url": "https://closetai-three.vercel.app",
+      "keywords": "FastAPI, Next.js, Computer Vision, NVIDIA NeMo"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "CreatINN Academy",
+      "description": "Premium Learning Management System with student LMS and admin features",
+      "url": "https://creatinnacademy.com",
+      "keywords": "Next.js, TypeScript, Prisma, NextAuth"
+    }
+  ]
 }
 </script>
 
@@ -171,10 +212,11 @@ body.on-btn  #cr { width: 84px; height: 84px; background: rgba(200,255,0,0.12); 
   color: var(--lime); text-transform: uppercase; transform: translateY(120%); opacity: 0; display: block;
 }
 .hn-row { overflow: hidden; }
+.hn-row h1 { margin: 0; padding: 0; font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem, 16vw, 15rem); line-height: 0.87; letter-spacing: -0.01em; color: var(--white); display: block; }
 .hn {
   font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem, 16vw, 15rem);
   line-height: 0.87; letter-spacing: -0.01em; color: var(--white);
-  display: block; transform: translateY(115%); will-change: transform;
+  display: inline-block; transform: translateY(115%); will-change: transform;
 }
 .hn.lime { color: var(--lime); }
 #hfoot { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 3rem; opacity: 0; }
@@ -286,12 +328,18 @@ body.on-btn  #cr { width: 84px; height: 84px; background: rgba(200,255,0,0.12); 
 .pinfo { padding: 4.5rem 3.5rem; display: flex; flex-direction: column; justify-content: center; }
 .pnum { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; color: var(--lime); margin-bottom: 1.5rem; text-transform: uppercase; }
 .pname { overflow: hidden; margin-bottom: 1.5rem; }
+.pname h3 {
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 5.5vw, 5.5rem);
+  line-height: 0.88; color: var(--white); display: block;
+  margin: 0; padding: 0;
+}
 .pname span {
   font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 5.5vw, 5.5rem);
   line-height: 0.88; color: var(--white); display: block;
   transform: translateY(115%);
   transition: transform .78s cubic-bezier(0.22,1,0.36,1);
 }
+.proj-item.v .pname h3 { transform: translateY(0); }
 .proj-item.v .pname span { transform: translateY(0); }
 .pbody { font-size: 0.86rem; color: var(--gray); line-height: 1.95; margin-bottom: 2rem; max-width: 380px; }
 .ptags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 2.5rem; }
@@ -386,8 +434,7 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
   <div id="hghost">MK</div>
   <div class="hero-inner">
     <div class="hero-tag"><span id="htag">Software &amp; AI Engineer — Lagos, Nigeria</span></div>
-    <div class="hn-row"><span class="hn" id="hn1">OLUWAMAYOWA</span></div>
-    <div class="hn-row"><span class="hn lime" id="hn2">KALEJAIYE</span></div>
+    <h1 class="hn-row"><span class="hn" id="hn1">OLUWAMAYOWA</span> <span class="hn lime" id="hn2">KALEJAIYE</span></h1>
     <div id="hfoot">
       <p class="hdesc">Building scalable systems,<br>full-stack products &amp; AI-enhanced features.<br>Latest: PinPoint — Real-time Tracking.</p>
       <div class="hscroll"><div class="htrack"></div><span>Scroll</span></div>
@@ -400,7 +447,7 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
 
 <!-- WORK -->
 <section id="work">
-  <div class="slabel" id="sl-work">01 — Work Experience</div>
+  <h2 class="slabel" id="sl-work">01 — Work Experience</h2>
   <div class="exp-list">
 
     <div class="exp-row" data-d="0">
@@ -466,13 +513,18 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="proj-head"><div class="slabel" id="sl-proj">02 — Selected Projects</div></div>
+  <div class="proj-head"><h2 class="slabel" id="sl-proj">02 — Selected Projects</h2></div>
 
   <div class="proj-item" data-screens="images/pp1.png,images/pp2.png,images/pp3.png,images/pp4.png">
-    <div class="pvis"><div class="pvis-grid"></div><div class="pvis-num">01</div><div class="pvis-icon">📍</div></div>
+    <div class="pvis">
+      <div class="pvis-grid"></div>
+      <div class="pvis-num" aria-label="Project 1">01</div>
+      <div class="pvis-icon" aria-label="Location pin icon">📍</div>
+      <img src="images/pp1.png" alt="PinPoint - Real-time delivery tracking platform showing live location map interface">
+    </div>
     <div class="pinfo">
       <div class="pnum">001 / Live Tracking</div>
-      <div class="pname"><span>PinPoint</span></div>
+      <div class="pname"><h3><span>PinPoint</span></h3></div>
       <p class="pbody">Real-time delivery tracking platform. Share your location with drivers, get instant ETA updates, and track arrivals live. Built with Next.js, Firebase Realtime Database, and real-time geolocation APIs for fast, secure, and seamless tracking experience.</p>
       <div class="ptags"><span class="ptag">Next.js</span><span class="ptag">Firebase</span><span class="ptag">Realtime Database</span><span class="ptag">Geolocation</span><span class="ptag">Maps API</span><span class="ptag">Real-time Sync</span></div>
       <a href="https://pinpnt.vercel.app" target="_blank" rel="noopener" class="plink">View Live Site →</a>
@@ -480,10 +532,15 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
   </div>
 
   <div class="proj-item" data-screens="images/cl1.png,images/cl2.png,images/cl3.png,images/cl4.png">
-    <div class="pvis"><div class="pvis-grid"></div><div class="pvis-num">02</div><div class="pvis-icon">🧥</div></div>
+    <div class="pvis">
+      <div class="pvis-grid"></div>
+      <div class="pvis-num" aria-label="Project 2">02</div>
+      <div class="pvis-icon" aria-label="Clothing wardrobe icon">🧥</div>
+      <img src="images/cl1.png" alt="ClosetAI - AI-powered wardrobe recommendation showing outfit suggestions">
+    </div>
     <div class="pinfo">
       <div class="pnum">002 / AI Product</div>
-      <div class="pname"><span>ClosetAI</span></div>
+      <div class="pname"><h3><span>ClosetAI</span></h3></div>
       <p class="pbody">AI-powered wardrobe recommendation platform. Designed full product vision and architecture — using computer vision, NVIDIA NeMo LLM embeddings, and rule-based scoring to reduce decision fatigue, encourage outfit reuse, and support natural language outfit queries.</p>
       <div class="ptags"><span class="ptag">FastAPI</span><span class="ptag">Next.js</span><span class="ptag">PostgreSQL</span><span class="ptag">Computer Vision</span><span class="ptag">NVIDIA NeMo</span><span class="ptag">LLM</span><span class="ptag">JWT</span></div>
       <a href="https://closetai-three.vercel.app/" target="_blank" rel="noopener" class="plink">View Live Site →</a>
@@ -491,10 +548,15 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
   </div>
 
   <div class="proj-item" data-screens="images/ca1.png,images/ca2.png,images/ca3.png,images/ca4.png">
-    <div class="pvis"><div class="pvis-grid"></div><div class="pvis-num">03</div><div class="pvis-icon">🎓</div></div>
+    <div class="pvis">
+      <div class="pvis-grid"></div>
+      <div class="pvis-num" aria-label="Project 3">03</div>
+      <div class="pvis-icon" aria-label="Education graduation cap icon">🎓</div>
+      <img src="images/ca1.png" alt="CreatINN Academy LMS platform displaying course management and student portal">
+    </div>
     <div class="pinfo">
       <div class="pnum">003 / LMS Platform</div>
-      <div class="pname"><span>CreatINN Academy</span></div>
+      <div class="pname"><h3><span>CreatINN Academy</span></h3></div>
       <p class="pbody">Premium Learning Management System for CreatINN Academy. Built with Next.js 14+, TypeScript, Tailwind CSS, Prisma, NextAuth, and Framer Motion. Includes student LMS portal, extensive admin course management, application workflow, and alumni track features.</p>
       <div class="ptags"><span class="ptag">Next.js</span><span class="ptag">TypeScript</span><span class="ptag">Tailwind CSS</span><span class="ptag">Prisma</span><span class="ptag">NextAuth</span><span class="ptag">Framer Motion</span><span class="ptag">Zustand</span><span class="ptag">react-player</span></div>
       <a href="https://creatinnacademy.com" target="_blank" rel="noopener" class="plink">View Live Site →</a>
@@ -505,8 +567,8 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="ct-sm" id="ctl">04 — Let's Connect</div>
-  <div class="ct-h" id="cth">LET'S<br>BUILD<br><span>GREAT</span><br>THINGS.</div>
+  <h2 class="ct-sm" id="ctl">04 — Let's Connect</h2>
+  <h2 class="ct-h" id="cth">LET'S<br>BUILD<br><span>GREAT</span><br>THINGS.</h2>
   <div class="ct-btns" id="ctb">
     <a href="https://www.linkedin.com/in/mayowa-kalejaiye" target="_blank" rel="noopener" class="mbtn mbtn-s">LinkedIn ↗</a>
     <a href="https://github.com/mayowa-kalejaiye"          target="_blank" rel="noopener" class="mbtn mbtn-g">GitHub ↗</a>
