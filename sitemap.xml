@@ -6,4 +6,52 @@
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
+    <url>
+        <loc>https://formhookapp.vercel.app/</loc>
+        <lastmod>2026-04-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://pinpnt.vercel.app/</loc>
+        <lastmod>2026-04-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://closetai-three.vercel.app/</loc>
+        <lastmod>2026-04-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://creatinnacademy.com/</loc>
+        <lastmod>2026-04-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://mayowa-kalejaiye.vercel.app/projects/formhook.html</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://mayowa-kalejaiye.vercel.app/projects/pinpoint.html</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://mayowa-kalejaiye.vercel.app/projects/closetai.html</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://mayowa-kalejaiye.vercel.app/projects/creatinn.html</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
 </urlset>

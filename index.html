@@ -67,9 +67,9 @@
       "@type": "ListItem",
       "position": 1,
       "name": "PinPoint",
-      "description": "Real-time delivery tracking platform with geolocation APIs",
+      "description": "Real-time delivery tracking platform built with HTML, CSS, and JavaScript",
       "url": "https://pinpnt.vercel.app",
-      "keywords": "Next.js, Firebase, Real-time tracking"
+      "keywords": "HTML, CSS, JavaScript, Firebase, Real-time tracking"
     },
     {
       "@type": "ListItem",
@@ -86,6 +86,15 @@
       "description": "Premium Learning Management System with student LMS and admin features",
       "url": "https://creatinnacademy.com",
       "keywords": "Next.js, TypeScript, Prisma, NextAuth"
+    }
+    ,
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "FormHook",
+      "description": "FormHook — lightweight form backend for collecting submissions and webhooks",
+      "url": "https://formhookapp.vercel.app/",
+      "keywords": "Next.js, Tailwind CSS, Serverless, Supabase"
     }
   ]
 }
@@ -225,6 +234,61 @@ body.on-btn  #cr { width: 84px; height: 84px; background: rgba(200,255,0,0.12); 
 .htrack { width: 1px; height: 60px; background: rgba(240,237,230,0.12); position: relative; overflow: hidden; }
 .htrack::after { content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%; background: var(--lime); animation: sd 1.8s ease infinite; }
 @keyframes sd { 0% { top: -100%; opacity: 1; } 100% { top: 100%; opacity: 0; } }
+
+/* Hero avatar + CTAs */
+.hero-meta { display:flex; gap:1.2rem; align-items:center; margin-bottom:1.2rem; }
+.avatar { width:96px; height:96px; border-radius:50%; object-fit:cover; border:2px solid rgba(200,255,0,0.12); box-shadow:0 6px 24px rgba(0,0,0,0.6); }
+.hero-ctas { display:flex; gap:0.8rem; align-items:center; }
+
+/* About section */
+#about { padding:6rem 3.5rem; border-top:1px solid var(--border); }
+.about-inner { max-width:1100px; margin:0 auto; }
+.about-grid { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(280px, 360px); gap:1.2rem; align-items:start; }
+.about-card { padding:1.4rem; border:1px solid var(--border); border-radius:18px; background:linear-gradient(180deg, rgba(17,17,16,0.94), rgba(17,17,16,0.78)); box-shadow:0 18px 40px rgba(0,0,0,0.18); }
+.about-kicker { font-family:'DM Mono', monospace; font-size:0.65rem; letter-spacing:0.18em; color:var(--lime); text-transform:uppercase; margin-bottom:0.9rem; }
+.about-lead { color:var(--white); font-size:1.02rem; line-height:1.85; margin:0 0 1rem; max-width:62ch; }
+.about-points { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:0.8rem; margin:1rem 0 1.2rem; }
+.about-point { padding:0.95rem; border:1px solid var(--border); border-radius:12px; background:rgba(240,237,230,0.02); }
+.about-point strong { display:block; font-family:'DM Mono', monospace; font-size:0.64rem; letter-spacing:0.16em; color:var(--lime); text-transform:uppercase; margin-bottom:0.45rem; }
+.about-point span { display:block; color:var(--gray); line-height:1.7; font-size:0.9rem; }
+.about-actions { display:flex; flex-wrap:wrap; gap:0.75rem; }
+.about-skills h3 { font-family:'Bebas Neue', sans-serif; font-size:1.8rem; line-height:1; margin:0 0 1rem; color:var(--white); }
+.skills-grid { display:flex; flex-wrap:wrap; gap:0.7rem; }
+.skill-pill { display:inline-flex; align-items:center; padding:0.7rem 0.9rem; border:1px solid var(--border); border-radius:999px; color:var(--gray); background:rgba(240,237,230,0.02); font-family:'DM Mono', monospace; font-size:0.68rem; letter-spacing:0.08em; line-height:1.4; }
+
+/* Case study */
+.case-studies { padding:3rem 3.5rem 0 3.5rem; }
+.case-inner { max-width:1100px; margin:0 auto; }
+.case-spotlight {
+  display:grid; grid-template-columns:minmax(0,1.05fr) minmax(300px, 460px); gap:2rem; align-items:center;
+  padding:1.5rem; border:1px solid var(--border); border-radius:18px;
+  background:linear-gradient(180deg, rgba(17,17,16,0.96), rgba(5,5,5,0.98));
+  box-shadow:0 22px 50px rgba(0,0,0,0.26);
+}
+.case-kicker { font-family:'DM Mono', monospace; font-size:0.68rem; letter-spacing:0.2em; color:var(--lime); text-transform:uppercase; margin-bottom:0.9rem; }
+.case-title { font-family:'Bebas Neue', sans-serif; font-size:clamp(2rem, 4vw, 3.7rem); line-height:0.95; margin:0 0 0.75rem; }
+.case-desc { color:var(--gray); line-height:1.9; margin:0; }
+.case-copy { display:grid; gap:1.1rem; }
+.case-points { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:0.9rem; }
+.case-point { padding:1rem; border:1px solid var(--border); border-radius:12px; background:rgba(240,237,230,0.02); }
+.case-label { display:block; font-family:'DM Mono', monospace; font-size:0.65rem; letter-spacing:0.16em; color:var(--lime); text-transform:uppercase; margin-bottom:0.6rem; }
+.case-point p { margin:0; color:var(--gray); line-height:1.75; font-size:0.88rem; }
+.case-meta { color:var(--gray); margin-top:0.25rem; }
+.case-actions { display:flex; gap:0.9rem; flex-wrap:wrap; align-items:center; }
+.case-img { width:100%; border-radius:14px; border:1px solid var(--border); display:block; box-shadow:0 18px 40px rgba(0,0,0,0.2); }
+.case-note { margin-top:0.85rem; font-family:'DM Mono', monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); }
+.public-gallery { padding:1rem; border:1px solid var(--border); border-radius:16px; background:linear-gradient(180deg, rgba(17,17,16,0.96), rgba(5,5,5,0.98)); box-shadow:0 24px 60px rgba(0,0,0,0.28); }
+.public-gallery .gallery-viewport { position:relative; overflow:hidden; border-radius:12px; background:var(--dim); aspect-ratio:4/5; }
+.public-gallery .gallery-slide { position:absolute; inset:0; opacity:0; transform:translateX(8px); transition:opacity .35s ease, transform .35s ease; pointer-events:none; margin:0; }
+.public-gallery .gallery-slide.is-active { opacity:1; transform:translateX(0); pointer-events:auto; }
+.public-gallery .gallery-slide picture, .public-gallery .gallery-slide img { width:100%; height:100%; display:block; }
+.public-gallery .gallery-slide img { object-fit:contain; object-position:center center; background:var(--dim); }
+.public-gallery .gallery-controls { display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-top:.9rem; }
+.public-gallery .gallery-btn { appearance:none; border:1px solid var(--border); background:transparent; color:var(--white); font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; padding:.8rem 1rem; border-radius:999px; cursor:pointer; }
+.public-gallery .gallery-btn:hover { border-color:var(--lime); color:var(--lime); }
+.public-gallery .gallery-status { font-family:'DM Mono',monospace; color:var(--gray); font-size:.72rem; letter-spacing:.1em; }
+.public-gallery .gallery-viewport { aspect-ratio:4/5; }
+.public-gallery .gallery-slide img { object-fit:contain; object-position:center center; background:var(--dim); }
 
 /* ─── MARQUEE ────────────────── */
 #mq { padding: 1.5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; }
@@ -390,7 +454,14 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
   #nav { padding: 1.5rem; }
   .nav-links { gap: 1.5rem; }
   #hero { padding: 0 1.5rem 3.5rem; }
+  #about { padding: 5rem 1.5rem; }
   #work { padding: 5rem 1.5rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-card { padding: 1.1rem; }
+  .about-points { grid-template-columns: 1fr; }
+  .about-lead { font-size: 0.96rem; line-height: 1.8; }
+  .about-actions { gap: 0.6rem; }
+  .about-actions .mbtn { width: 100%; justify-content: center; }
   .exp-row { grid-template-columns: 40px 1fr; gap: 1rem; }
   .exp-dates { display: none; }
   .proj-item { grid-template-columns: 1fr; }
@@ -398,6 +469,11 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
   .pvis { min-height: 240px; }
   .pinfo { padding: 3rem 1.5rem; }
   .proj-head { padding: 0 1.5rem; }
+  #case-studies { padding: 2.5rem 1.5rem 0 1.5rem; }
+  .case-spotlight { grid-template-columns:1fr; padding:1.1rem; gap:1.2rem; }
+  .case-points { grid-template-columns:1fr; }
+  .public-gallery .gallery-viewport { aspect-ratio: 4/5; }
+  .public-gallery .gallery-controls { gap:.8rem; }
   #contact { padding: 6rem 1.5rem; }
   footer { flex-direction: column; gap: .5rem; text-align: center; padding: 1.5rem; }
   body { cursor: auto; }
@@ -433,11 +509,54 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
 <section id="hero">
   <div id="hghost">MK</div>
   <div class="hero-inner">
-    <div class="hero-tag"><span id="htag">Software &amp; AI Engineer — Lagos, Nigeria</span></div>
+    <div class="hero-top">
+      <div class="hero-tag"><span id="htag">Software &amp; AI Engineer — Lagos, Nigeria</span></div>
+      <div class="hero-meta">
+        <picture>
+          <source srcset="images/mayowa.webp" type="image/webp">
+          <img src="images/mayowa.png" alt="Mayowa Kalejaiye portrait" class="avatar" width="96" height="96" loading="eager">
+        </picture>
+        <div class="hero-ctas">
+          <a href="#contact" class="mbtn mbtn-s">Hire Me</a>
+          <a href="/mayowa-cv.pdf" class="mbtn mbtn-g" download>Download CV</a>
+        </div>
+      </div>
+    </div>
     <h1 class="hn-row"><span class="hn" id="hn1">OLUWAMAYOWA</span> <span class="hn lime" id="hn2">KALEJAIYE</span></h1>
     <div id="hfoot">
       <p class="hdesc">Building scalable systems,<br>full-stack products &amp; AI-enhanced features.<br>Latest: PinPoint — Real-time Tracking.</p>
       <div class="hscroll"><div class="htrack"></div><span>Scroll</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <h2 class="slabel">About Me</h2>
+    <div class="about-grid">
+      <div class="about-bio about-card">
+        <div class="about-kicker">Profile</div>
+        <p class="about-lead">I’m Mayowa Kalejaiye, a software and AI engineer focused on scalable systems, real-time products, and developer-first tooling. I like building things that are useful, fast to ship, and clean to maintain.</p>
+        <div class="about-points">
+          <div class="about-point"><strong>Build</strong><span>Product features, APIs, and interfaces that stay simple under real usage.</span></div>
+          <div class="about-point"><strong>Ship</strong><span>Move from idea to working software without losing quality or clarity.</span></div>
+          <div class="about-point"><strong>Scale</strong><span>Design systems that can grow without becoming hard to reason about.</span></div>
+        </div>
+        <div class="about-actions">
+          <a href="#contact" class="mbtn mbtn-s">Let's Talk</a>
+          <a href="/mayowa-cv.pdf" class="mbtn mbtn-g" download>Download CV</a>
+        </div>
+      </div>
+      <div class="about-skills about-card">
+        <h3>Core Skills</h3>
+        <div class="skills-grid">
+          <span class="skill-pill">FastAPI / Django / Next.js</span>
+          <span class="skill-pill">Distributed systems &amp; real-time APIs</span>
+          <span class="skill-pill">Computer Vision &amp; LLM integrations</span>
+          <span class="skill-pill">React / Tailwind / TypeScript</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -514,6 +633,42 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
 <!-- PROJECTS -->
 <section id="projects">
   <div class="proj-head"><h2 class="slabel" id="sl-proj">02 — Selected Projects</h2></div>
+  <!-- CASE STUDIES -->
+  <section id="case-studies" class="case-studies">
+    <div class="case-inner">
+      <h2 class="slabel">Case Study — FormHook</h2>
+      <div class="case-spotlight">
+        <div class="case-copy">
+          <div class="case-kicker">Featured Project</div>
+          <p class="case-title">FormHook — Lightweight Form Backend</p>
+          <p class="case-desc">A fast form backend for developers who want submissions, dashboards, and automation without building plumbing from scratch.</p>
+          <div class="case-points">
+            <div class="case-point">
+              <span class="case-label">Problem</span>
+              <p>Developers needed a fast way to collect form submissions without building backend plumbing.</p>
+            </div>
+            <div class="case-point">
+              <span class="case-label">Solution</span>
+              <p>FormHook provides a serverless backend, dashboard, and integrations.</p>
+            </div>
+            <div class="case-point">
+              <span class="case-label">Result</span>
+              <p>Faster integration, lower maintenance, and flexible webhooks for automation.</p>
+            </div>
+          </div>
+          <p class="case-meta"><strong>Tech:</strong> Next.js, Tailwind CSS, Serverless APIs, Supabase</p>
+          <div class="case-actions">
+            <a href="https://formhookapp.vercel.app/" target="_blank" rel="noopener" class="mbtn mbtn-s">Open FormHook</a>
+            <a href="projects/formhook.html" class="mbtn mbtn-g">Read Case Study</a>
+          </div>
+        </div>
+        <div>
+          <img src="images/fh1.png" alt="FormHook dashboard screenshot" class="case-img">
+          <div class="case-note">Dashboard preview and submission workflow</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- FormHook Project -->
   <div class="proj-item" data-screens="images/fh1.png,images/fh2.png,images/fh3.png,images/fh4.png,images/fh5.png">
@@ -543,9 +698,10 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
     <div class="pinfo">
       <div class="pnum">002 / Live Tracking</div>
       <div class="pname"><h3><span>PinPoint</span></h3></div>
-      <p class="pbody">Real-time delivery tracking platform. Share your location with drivers, get instant ETA updates, and track arrivals live. Built with Next.js, Firebase Realtime Database, and real-time geolocation APIs for fast, secure, and seamless tracking experience.</p>
-      <div class="ptags"><span class="ptag">Next.js</span><span class="ptag">Firebase</span><span class="ptag">Realtime Database</span><span class="ptag">Geolocation</span><span class="ptag">Maps API</span><span class="ptag">Real-time Sync</span></div>
+      <p class="pbody">Real-time delivery tracking platform. Share your location with drivers, get instant ETA updates, and track arrivals live. Built with HTML, CSS, JavaScript, Firebase Realtime Database, and real-time geolocation APIs for a fast, simple, and focused experience.</p>
+      <div class="ptags"><span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">JavaScript</span><span class="ptag">Firebase</span><span class="ptag">Realtime Database</span><span class="ptag">Geolocation</span></div>
       <a href="https://pinpnt.vercel.app" target="_blank" rel="noopener" class="plink">View Live Site →</a>
+      <a href="projects/pinpoint.html" class="plink">Read Case Study →</a>
     </div>
   </div>
 
@@ -563,6 +719,7 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
       <p class="pbody">AI-powered wardrobe recommendation platform. Designed full product vision and architecture — using computer vision, NVIDIA NeMo LLM embeddings, and rule-based scoring to reduce decision fatigue, encourage outfit reuse, and support natural language outfit queries.</p>
       <div class="ptags"><span class="ptag">FastAPI</span><span class="ptag">Next.js</span><span class="ptag">PostgreSQL</span><span class="ptag">Computer Vision</span><span class="ptag">NVIDIA NeMo</span><span class="ptag">LLM</span><span class="ptag">JWT</span></div>
       <a href="https://closetai-three.vercel.app/" target="_blank" rel="noopener" class="plink">View Live Site →</a>
+      <a href="projects/closetai.html" class="plink">Read Case Study →</a>
     </div>
   </div>
 
@@ -580,6 +737,44 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
       <p class="pbody">Premium Learning Management System for CreatINN Academy. Built with Next.js 14+, TypeScript, Tailwind CSS, Prisma, NextAuth, and Framer Motion. Includes student LMS portal, extensive admin course management, application workflow, and alumni track features.</p>
       <div class="ptags"><span class="ptag">Next.js</span><span class="ptag">TypeScript</span><span class="ptag">Tailwind CSS</span><span class="ptag">Prisma</span><span class="ptag">NextAuth</span><span class="ptag">Framer Motion</span><span class="ptag">Zustand</span><span class="ptag">react-player</span></div>
       <a href="https://creatinnacademy.com" target="_blank" rel="noopener" class="plink">View Live Site →</a>
+      <a href="projects/creatinn.html" class="plink">Read Case Study →</a>
+    </div>
+  </div>
+</section>
+
+<!-- BUILD IN PUBLIC -->
+<section id="public-builds" class="case-studies">
+  <div class="case-inner">
+    <h2 class="slabel">03 — Build in Public</h2>
+    <div class="case-spotlight">
+      <div class="case-copy">
+        <div class="case-kicker">LinkedIn Posts</div>
+        <p class="case-title">I share the build process publicly</p>
+        <p class="case-desc">These screenshots are from the work I post on LinkedIn while shipping. They show the product thinking, the code, and the finished screens that sit behind the portfolio.</p>
+        <div class="case-points">
+          <div class="case-point">
+            <span class="case-label">Why</span>
+            <p>Public builds make the process visible and let people see the work before the final case study lands.</p>
+          </div>
+          <div class="case-point">
+            <span class="case-label">What</span>
+            <p>Shipping posts about backend work, AI systems, product pages, and design decisions from the build process.</p>
+          </div>
+          <div class="case-point">
+            <span class="case-label">Signal</span>
+            <p>It shows consistency, technical taste, and the ability to explain work in a way people can actually follow.</p>
+          </div>
+        </div>
+      </div>
+      <div class="public-gallery project-gallery" data-gallery data-alt-prefix="LinkedIn build post" data-slides="/images/li1.png,/images/li2.png,/images/li3.png,/images/li4.png">
+        <div class="gallery-viewport"></div>
+        <div class="gallery-controls">
+          <button class="gallery-btn" type="button" data-gallery-prev>Prev</button>
+          <div class="gallery-status"><span data-gallery-index>1</span> / <span data-gallery-total>4</span></div>
+          <button class="gallery-btn" type="button" data-gallery-next>Next</button>
+        </div>
+        <div class="case-note">LinkedIn build posts and product updates</div>
+      </div>
     </div>
   </div>
 </section>
@@ -588,12 +783,15 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
 <!-- CONTACT -->
 <section id="contact">
   <h2 class="ct-sm" id="ctl">04 — Let's Connect</h2>
-  <h2 class="ct-h" id="cth">LET'S<br>BUILD<br><span>GREAT</span><br>THINGS.</h2>
-  <div class="ct-btns" id="ctb">
-    <a href="https://www.linkedin.com/in/mayowa-kalejaiye" target="_blank" rel="noopener" class="mbtn mbtn-s">LinkedIn ↗</a>
-    <a href="https://github.com/mayowa-kalejaiye"          target="_blank" rel="noopener" class="mbtn mbtn-g">GitHub ↗</a>
-    <a href="https://closetai-three.vercel.app/"           target="_blank" rel="noopener" class="mbtn mbtn-g">ClosetAI Demo ↗</a>
-    <a href="https://formhookapp.vercel.app/"           target="_blank" rel="noopener" class="mbtn mbtn-g">FormHook Demo ↗</a>
+  <div class="ct-h" id="cth">LET'S<br>BUILD<br><span>GREAT</span><br>THINGS.</div>
+  <div class="contact-area">
+    
+    <div class="ct-btns" id="ctb">
+      <a href="mailto:kalejaiyemayowa3@gmail.com" class="mbtn mbtn-s">Email Me</a>
+      <a href="/mayowa-cv.pdf" class="mbtn mbtn-g" download>Download CV</a>
+      <a href="https://www.linkedin.com/in/mayowa-kalejaiye" target="_blank" rel="noopener" class="mbtn mbtn-g">LinkedIn ↗</a>
+      <a href="https://github.com/mayowa-kalejaiye" target="_blank" rel="noopener" class="mbtn mbtn-g">GitHub ↗</a>
+    </div>
   </div>
 </section>
 
@@ -602,6 +800,7 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing
   <p>Software &amp; AI Engineer — Lagos, Nigeria</p>
 </footer>
 
+<script src="/assets/js/project-gallery.js" defer></script>
 <script>
 /* ══ PRELOADER ══════════════════════════════ */
 const WORD = 'KALEJAIYE';

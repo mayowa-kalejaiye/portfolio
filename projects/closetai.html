@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ClosetAI — Case Study — Mayowa Kalejaiye</title>
+  <meta name="description" content="Case study: ClosetAI — AI wardrobe recommendation platform">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/project-overrides.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="site-brand" href="/">MK.DEV</a>
+    <div class="site-links">
+      <a href="/">Home</a>
+      <a href="/#projects">Projects</a>
+      <a href="/#contact">Contact</a>
+      <a href="https://github.com/mayowa-kalejaiye" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <div class="container">
+      <a class="back-link" href="/#projects">← Back to portfolio</a>
+      <div class="project-layout project-layout--hero">
+        <div>
+          <div class="case-sub">Case Study</div>
+          <h1 class="case-title">ClosetAI</h1>
+          <p class="case-desc">AI-powered wardrobe recommendation platform that uses computer vision and LLM embeddings to reduce decision fatigue and improve outfit discovery.</p>
+          <div class="meta-row">
+            <a class="mbtn mbtn-s" href="https://closetai-three.vercel.app/" target="_blank" rel="noopener">Open Live</a>
+            <a class="mbtn mbtn-g" href="/#projects">See More Projects</a>
+          </div>
+          <div class="tags"><span class="ptag">FastAPI</span><span class="ptag">Computer Vision</span><span class="ptag">NVIDIA NeMo</span><span class="ptag">Wardrobe AI</span></div>
+        </div>
+        <div class="project-gallery" data-gallery data-alt-prefix="ClosetAI" data-slides="/images/cl1.png,/images/cl2.png,/images/cl3.png,/images/cl4.png" data-webp="/images/cl1.webp,/images/cl2.webp,/images/cl3.webp,/images/cl4.webp">
+          <div class="gallery-viewport"></div>
+          <div class="gallery-controls">
+            <button class="gallery-btn" type="button" data-gallery-prev>Prev</button>
+            <div class="gallery-status"><span data-gallery-index>1</span> / <span data-gallery-total>4</span></div>
+            <button class="gallery-btn" type="button" data-gallery-next>Next</button>
+          </div>
+        </div>
+      </div>
+
+      <section class="case-row case-gap">
+        <div>
+          <h2>Context</h2>
+          <p class="case-desc">ClosetAI came from a familiar daily friction: people own more clothes than they actively use, but getting dressed still takes attention, memory, and a little emotional energy every morning.</p>
+          <h2>What I built</h2>
+          <p class="case-desc">I designed an AI wardrobe product that can identify clothing items, store the catalog, and generate outfit recommendations from the wardrobe instead of from a generic style feed. The aim was to make the system feel like a personal assistant rather than a search engine.</p>
+          <h2>Why this approach</h2>
+          <p class="case-desc">Computer vision handles item recognition, embeddings support style-aware matching, and natural language queries make the product easier to use than a strict category filter UI. FastAPI and PostgreSQL gave the backend a clean, structured shape while Next.js handled the interface.</p>
+        </div>
+        <aside>
+          <h2>Role & scope</h2>
+          <p class="case-desc">I shaped the product logic, recommendation flow, and the end-to-end wardrobe experience.</p>
+          <div class="tags"><span class="ptag">Vision Pipeline</span><span class="ptag">LLM Embeddings</span><span class="ptag">Recommendation UX</span><span class="ptag">Wardrobe Catalog</span></div>
+          <p class="case-meta">Tech: FastAPI, Next.js, PostgreSQL, NVIDIA NeMo</p>
+        </aside>
+      </section>
+
+      <section class="case-row case-gap">
+        <div>
+          <h2>Key features</h2>
+          <ul class="case-desc">
+            <li>Clothing ingestion and recognition to build the wardrobe catalog.</li>
+            <li>Style-aware outfit recommendations based on embeddings and ranking.</li>
+            <li>Natural language prompts so users can ask for an outfit in plain English.</li>
+            <li>A UI that reduces decision fatigue instead of adding more complexity.</li>
+          </ul>
+        </div>
+        <aside>
+          <h2>Gallery guide</h2>
+          <p class="case-desc">The gallery walks through wardrobe capture, recommendation output, and the interaction states that make the experience feel like a real product.</p>
+        </aside>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Mayowa Kalejaiye</p>
+    <p>Software &amp; AI Engineer — Lagos, Nigeria</p>
+  </footer>
+
+  <script src="/assets/js/project-gallery.js" defer></script>
+</body>
+</html>

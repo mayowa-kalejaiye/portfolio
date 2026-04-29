@@ -1,0 +1,11 @@
+{
+  "name": "portfolio-image-tools",
+  "version": "1.0.0",
+  "description": "Image conversion helpers for portfolio (PNG -> WebP)",
+  "scripts": {
+    "convert-images": "node scripts/convert-images.js"
+  },
+  "dependencies": {
+    "sharp": "^0.32.0"
+  }
+}
