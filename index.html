@@ -312,8 +312,8 @@
     <div class="job">
       <div class="job-left">
         <div class="job-title">PinPoint</div>
-        <div class="job-company">Engineered a zero-dependency live location-sharing widget. Implemented resilient 1.5-2s polling loops against Firebase Auth and Database, deliberately choosing simplicity and architectural correctness over fragile infrastructure.</div>
-        <div class="job-skills">HTML · CSS · JavaScript · Firebase · Geolocation</div>
+        <div class="job-company">Built a real-time GPS tracking engine for logistics, syncing driver and customer views through Firebase's realtime database with anonymous authentication. Chose polling over WebSockets deliberately — a 1.5 to 2 second sync interval that's simple to debug and reliable at this scale. Routes calculate through OSRM for real road paths, with automatic rerouting once a driver drifts past 300 meters off course.</div>
+        <div class="job-skills">HTML · CSS · JavaScript · Firebase · OSRM · Geolocation</div>
         <div class="job-links">
           <span class="job-link-label">Live</span><a href="https://pinpnt.vercel.app" target="_blank" class="job-link">pinpnt.vercel.app</a>
         </div>
@@ -326,7 +326,7 @@
     <div class="job">
       <div class="job-left">
         <div class="job-title">ClosetAI</div>
-        <div class="job-company">Developed an AI styling optimization engine utilizing NVIDIA NIM LLMs and computer vision. Scaled the backend to process complex vector embeddings for rapid, highly-personalized apparel recommendations under stringent latency constraints.</div>
+        <div class="job-company">Built an AI-powered outfit recommendation engine using Ministral 3 14B Instruct, a genuinely multimodal model served through NVIDIA NIM, handling both image understanding and structured attribute extraction in a single call. Backend runs a three-tier ranking fallback — full AI ranking, a lighter ML model once a user has real feedback history, and rule-based scoring underneath both — so the system always returns a usable result even when the top tier isn't available.</div>
         <div class="job-skills">FastAPI · Next.js · PostgreSQL · Computer Vision · NVIDIA NIM</div>
         <div class="job-links">
           <span class="job-link-label">Live</span><a href="https://closetai-three.vercel.app/" target="_blank" class="job-link">closetai-three.vercel.app</a>
