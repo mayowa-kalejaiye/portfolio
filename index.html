@@ -1,24 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mayowa Kalejaiye — Software & AI Engineer</title>
-<meta name="description" content="Mayowa Kalejaiye — Software and AI engineer focused on scalable systems, real-time products, and developer-first tooling.">
+<title>Mayowa Kalejaiye — Software &amp; AI Engineer</title>
+<meta name="description" content="Mayowa Kalejaiye — Software and AI engineer building scalable backends, real-time systems, and production-grade LLM integrations. Lagos, Nigeria.">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
+
+<script>
+(function(){try{var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark';}})();
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --bg: #0A0A0A;
-    --fg: #FFFFFF;
-    --fg-muted: #A1A1AA;
-    --border: #27272A;
-    --border-strong: #3F3F46;
-    --accent: #C7FE01;
+    --background: #0e0d0d;
+    --foreground: #f2f2f2;
+    --text-secondary: #949494;
+    --text-label: #909090;
+    --accent: #8fe327;
+    --line: #282828;
+    --line-strong: #3c3c3c;
+  }
+  html[data-theme="light"] {
+    --background: #f1f0ec;
+    --foreground: #171717;
+    --text-secondary: #68665f;
+    --text-label: #63615a;
+    --accent: #5b920f;
+    --line: #d7d5cf;
+    --line-strong: #b9b7b0;
   }
 
   *, *::before, *::after {
@@ -28,36 +42,53 @@
   }
 
   html {
-    scroll-behavior: smooth;
-    background-color: var(--bg);
-    color: var(--fg);
+    overflow-x: clip;
+    scroll-padding-top: 2rem;
+    background: var(--background);
+    color: var(--foreground);
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   body {
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
+    background: var(--background);
+    color: var(--foreground);
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
-  /* Sidebar Layout */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  a {
+    color: inherit;
+  }
+
   .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-    width: 140px;
     display: flex;
     align-items: center;
-    padding-left: 2rem;
+    margin-left: 32px;
     z-index: 40;
+    pointer-events: none;
   }
 
   .nav-menu {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 8px;
     pointer-events: auto;
   }
 
@@ -66,20 +97,19 @@
     align-items: center;
     height: 1px;
     width: 110px;
-    background: transparent;
     border: none;
     cursor: pointer;
     text-decoration: none;
     outline: none;
-    margin: -0.75rem 0; /* -my-3 */
-    padding: 0.75rem 0; /* py-3 */
+    margin: -12px 0;
+    padding: 12px 0;
     box-sizing: content-box;
   }
 
   .nav-line {
     display: block;
     height: 1px;
-    background-color: var(--border-strong);
+    background-color: var(--line-strong);
     width: 110px;
     transform-origin: left center;
     transform: scaleX(0.27);
@@ -89,7 +119,7 @@
   .nav-item:hover .nav-line,
   .nav-item:focus-visible .nav-line {
     transform: scaleX(0.4);
-    background-color: var(--fg);
+    background-color: var(--foreground);
   }
 
   .nav-item.active .nav-line {
@@ -104,112 +134,126 @@
     height: 1px;
     width: 110px;
   }
-  
+
   .nav-spacer-line {
     display: block;
     height: 1px;
-    background-color: var(--border-strong);
+    background-color: var(--line-strong);
     width: 110px;
     transform-origin: left center;
     transform: scaleX(0.22);
+    transition: transform 0.15s ease, background-color 0.15s ease;
   }
 
-  /* Main Content Layout */
-  .main-content {
+  .container {
     flex: 1;
-    margin-left: 140px; /* Offset for sidebar */
-    max-width: 900px;
-    padding: 6rem 2rem 8rem 2rem;
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
   }
 
-  /* Typography */
-  h1, h2, h3 {
-    font-family: 'Bricolage Grotesque', sans-serif;
+  .hero {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .hero-name {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-role {
+    font-size: 16px;
+    color: var(--text-secondary);
+  }
+
+  .hero-headline {
+    font-size: 30px;
+    line-height: 1.2;
     font-weight: 600;
     letter-spacing: -0.03em;
   }
 
-  .display-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-  }
-
-  .section-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--fg-muted);
-    margin-bottom: 2rem;
+  @media (min-width: 64rem) {
+    .hero-headline {
+      font-size: 36px;
+      line-height: 1.11;
+    }
   }
 
   .text-body {
-    font-size: 1.125rem;
-    color: var(--fg-muted);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    max-width: 650px;
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.625;
+    max-width: 65ch;
   }
 
-  a.link-underline {
-    color: var(--fg);
+  .text-body p {
+    margin-bottom: 1rem;
+  }
+
+  .text-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .link-underline {
+    color: var(--foreground);
     text-decoration: underline;
-    text-decoration-color: var(--border-strong);
+    text-decoration-color: var(--line-strong);
     text-underline-offset: 4px;
     transition: color 0.2s, text-decoration-color 0.2s;
   }
 
-  a.link-underline:hover {
-    text-decoration-color: var(--fg);
+  .link-underline:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
   }
 
-  /* Header Links */
-  .header-meta {
-    margin-bottom: 4rem;
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-  }
-  .header-avatar {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid var(--border-strong);
-  }
-  .header-name {
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
-  .header-role {
-    font-size: 1rem;
-    color: var(--fg-muted);
+  .label,
+  .label-light {
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
   }
 
-  /* Sections */
-  section {
-    margin-bottom: 8rem;
-    scroll-margin-top: 6rem;
+  .label {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 1.4px;
+    color: var(--text-label);
   }
 
-  /* Work Slider */
-  .slider-container {
-    width: 100vw;
-    margin-left: calc(-1 * (140px + 2rem)); /* Break out of main content constraints */
-    padding-left: calc(140px + 2rem);
-    padding-right: 2rem;
+  .label-light {
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
   }
 
-  .slider {
-    display: flex;
-    gap: 2rem;
+  .track-wrap {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
     overflow-x: auto;
-    padding-bottom: 2rem;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
   }
-  .slider::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+
+  .track-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+  .work-track {
+    display: flex;
+    gap: 36px;
+    width: max-content;
+    padding-left: max(16px, calc(50vw - 406px));
+    padding-right: 16px;
+    padding-bottom: 28px;
+    list-style: none;
   }
 
   .project-card {
@@ -218,15 +262,15 @@
     width: min(504px, 82vw);
     aspect-ratio: 504 / 297;
     flex-shrink: 0;
-    border: 1px solid var(--border);
-    border-radius: 4px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
     overflow: hidden;
     text-decoration: none;
     transition: border-color 0.3s;
   }
 
   .project-card:hover {
-    border-color: var(--border-strong);
+    border-color: var(--line-strong);
   }
 
   .project-image {
@@ -245,342 +289,568 @@
   .project-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.95) 100%);
+    background: linear-gradient(180deg, rgba(8,8,8,0) 0%, rgba(8,8,8,0.95) 100%);
   }
 
   .project-content {
     position: absolute;
+    inset-inline: 0;
     bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1.5rem;
+    padding: 22px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    gap: 20px;
   }
 
   .project-title {
-    font-size: 1.25rem;
+    font-size: 19px;
     font-weight: 600;
-    color: var(--fg);
-    letter-spacing: -0.02em;
+    color: #f2f2f2;
+    letter-spacing: -0.35px;
   }
 
   .project-meta {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--fg-muted);
-    margin-top: 0.25rem;
+    font-size: 11.5px;
+    color: #c9c9c9;
+    letter-spacing: 0.3px;
+    margin-top: 3px;
   }
 
   .project-icon {
-    width: 1.25rem;
-    height: 1.25rem;
-    color: var(--fg-muted);
+    width: 16px;
+    height: 16px;
+    color: var(--accent);
+    flex-shrink: 0;
     transition: transform 0.3s ease-out, color 0.3s ease-out;
   }
 
   .project-card:hover .project-icon {
     transform: translate(2px, -2px);
-    color: var(--fg);
   }
 
-  /* Experience List */
+  .project-more {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: min(504px, 82vw);
+    aspect-ratio: 504 / 297;
+    flex-shrink: 0;
+    border: 1px dashed var(--line-strong);
+    border-radius: 3px;
+    background: var(--background);
+    text-decoration: none;
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .project-more:hover {
+    border-color: var(--accent);
+  }
+
+  .project-more-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-label);
+  }
+
+  .project-more-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--foreground);
+    transition: color 0.3s;
+  }
+
+  .project-more:hover .project-more-title {
+    color: var(--accent);
+  }
+
+  .project-more .project-icon {
+    width: 18px;
+    height: 18px;
+  }
+
   .exp-list {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 48px;
   }
 
   .exp-item {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0.5rem;
+    gap: 8px;
   }
-  
+
   @media (min-width: 640px) {
     .exp-item {
       grid-template-columns: 2fr 1fr;
-      gap: 2rem;
+      gap: 32px;
     }
   }
 
   .exp-role {
-    font-size: 1.125rem;
-    font-weight: 500;
-    color: var(--fg);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--foreground);
   }
 
   .exp-company {
-    font-size: 1rem;
-    color: var(--fg-muted);
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-top: 2px;
   }
 
   .exp-desc {
-    margin-top: 1rem;
-    font-size: 1rem;
-    color: var(--fg-muted);
+    margin-top: 16px;
+    font-size: 15px;
+    color: var(--text-secondary);
     line-height: 1.6;
   }
-  
+
   .exp-desc p {
-    margin-bottom: 0.75rem;
+    margin-bottom: 12px;
+  }
+
+  .exp-desc p:last-child {
+    margin-bottom: 0;
   }
 
   .exp-meta {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.875rem;
-    color: var(--fg-muted);
+    font-size: 13px;
+    color: var(--text-label);
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 4px;
   }
-  
+
   @media (min-width: 640px) {
     .exp-meta {
       text-align: right;
+      align-items: flex-end;
     }
   }
 
   .exp-badge {
     display: inline-block;
-    padding: 0.2rem 0.5rem;
-    border: 1px solid var(--border-strong);
+    padding: 3px 8px;
+    border: 1px solid var(--line-strong);
     border-radius: 4px;
-    font-size: 0.7rem;
+    font-size: 10.5px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-top: 0.5rem;
+    margin-top: 8px;
     width: max-content;
+    color: var(--text-secondary);
   }
 
   .exp-badge.current {
-    color: var(--bg);
-    background-color: var(--fg);
-    border-color: var(--fg);
+    color: var(--background);
+    background-color: var(--foreground);
+    border-color: var(--foreground);
   }
 
-  /* Skills & Footer */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 3rem 2rem;
-  }
-
-  .skill-category {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.875rem;
-    color: var(--fg);
-    margin-bottom: 1rem;
-  }
-
-  .skill-list {
+  .cap-list {
     list-style: none;
-    color: var(--fg-muted);
-    line-height: 1.8;
-  }
-
-  footer {
-    padding-top: 4rem;
-    border-top: 1px solid var(--border);
     display: flex;
-    justify-content: space-between;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.875rem;
-    color: var(--fg-muted);
+    flex-direction: column;
+    gap: 22px;
   }
 
-  /* Responsive Adjustments */
-  @media (max-width: 1024px) {
+  .cap-item {
+    display: flex;
+    gap: 12px;
+  }
+
+  .cap-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    margin-top: 11px;
+    flex-shrink: 0;
+  }
+
+  .cap-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--foreground);
+    letter-spacing: -0.01em;
+  }
+
+  .cap-desc {
+    margin-top: 4px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  .feed-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  .feed-head .label-light {
+    margin-bottom: 0;
+  }
+
+  .work-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  .work-head .label {
+    margin-bottom: 0;
+  }
+
+  .view-all {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .view-all:hover {
+    color: var(--accent);
+  }
+
+  .feed-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .feed-title {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--foreground);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: color 0.2s;
+  }
+
+  .feed-title:hover {
+    color: var(--accent);
+  }
+
+  .feed-meta {
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  .feed-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    color: var(--text-label);
+    margin-right: 8px;
+  }
+
+  .care-closing {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin: 40px 0 24px;
+    max-width: 22ch;
+  }
+
+  .cta {
+    display: inline-block;
+    padding: 12px 22px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--foreground);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .cta:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .footer {
+    width: 100%;
+    max-width: 860px;
+    margin: 90px auto 0;
+    padding: 28px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    background: var(--background);
+  }
+
+  .footer-brand {
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-brand:hover {
+    color: var(--accent);
+  }
+
+  .theme-toggle {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--line-strong);
+    color: var(--accent);
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  html[data-theme="dark"] .icon-moon { display: none; }
+  html[data-theme="light"] .icon-sun { display: none; }
+
+  @media (max-width: 1023px) {
     .sidebar {
       display: none;
     }
-    .main-content {
-      margin-left: 0;
-      padding-top: 4rem;
-    }
-    .slider-container {
-      margin-left: -2rem;
-      padding-left: 2rem;
-    }
   }
 
-  @media (max-width: 640px) {
-    .main-content {
-      padding: 3rem 1.25rem 6rem 1.25rem;
+  @media (max-width: 767px) {
+    .container {
+      padding: 0 16px;
+      gap: 80px;
     }
-    .header-meta {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 3rem;
+    .hero {
+      margin-top: 72px;
+      gap: 32px;
     }
-    .display-title {
-      font-size: 2.25rem;
-    }
-    .slider-container {
-      margin-left: -1.25rem;
-      padding-left: 1.25rem;
-    }
-    section {
-      margin-bottom: 5rem;
-    }
-    .exp-item {
-      gap: 0.5rem;
-    }
-    .exp-meta {
-      text-align: left;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.75rem;
-      margin-top: 0.5rem;
-    }
-    .exp-meta .exp-badge {
-      margin-top: 0;
-    }
-    footer {
-      flex-direction: column;
-      gap: 1rem;
-      text-align: center;
+    .footer {
+      padding-left: 16px;
+      padding-right: 16px;
     }
   }
 </style>
 </head>
 <body>
 
-<aside class="sidebar" style="pointer-events: none;">
+<aside class="sidebar">
   <nav class="nav-menu" aria-label="Page sections">
-    <a href="#intro" class="nav-item active" aria-label="Go to Introduction" title="Introduction">
-      <span class="nav-line"></span>
-    </a>
+    <a href="#intro" class="nav-item active" aria-label="Go to Introduction" title="Introduction"><span class="nav-line"></span></a>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
-    
-    <a href="#work" class="nav-item" aria-label="Go to Selected work" title="Selected work">
-      <span class="nav-line"></span>
-    </a>
+
+    <a href="#work" class="nav-item" aria-label="Go to Selected work" title="Selected work"><span class="nav-line"></span></a>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
-    
-    <a href="#experience" class="nav-item" aria-label="Go to Experience" title="Experience">
-      <span class="nav-line"></span>
-    </a>
+
+    <a href="#approach" class="nav-item" aria-label="Go to Approach" title="Approach"><span class="nav-line"></span></a>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
-    
-    <a href="#skills" class="nav-item" aria-label="Go to Capabilities" title="Capabilities">
-      <span class="nav-line"></span>
-    </a>
+
+    <a href="#experience" class="nav-item" aria-label="Go to Experience" title="Experience"><span class="nav-line"></span></a>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
-    
-    <a href="#what-i-care-about" class="nav-item" aria-label="Go to What I care about" title="What I care about">
-      <span class="nav-line"></span>
-    </a>
+
+    <a href="#capabilities" class="nav-item" aria-label="Go to Capabilities" title="Capabilities"><span class="nav-line"></span></a>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+
+    <a href="#feed" class="nav-item" aria-label="Go to My feed" title="My feed"><span class="nav-line"></span></a>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+
+    <a href="#care" class="nav-item" aria-label="Go to What I care about" title="What I care about"><span class="nav-line"></span></a>
   </nav>
 </aside>
 
-<main class="main-content">
-  
-  <header class="header-meta">
-    <img src="images/mayowa.webp" alt="Mayowa Kalejaiye" class="header-avatar">
-    <div>
-      <h1 class="header-name">Mayowa Kalejaiye</h1>
-      <p class="header-role">Software &amp; AI Systems Engineer</p>
-    </div>
-  </header>
+<main class="container">
 
-  <section id="intro">
-    <h2 class="display-title">I engineer scalable <br/>backend systems and <br/>intelligent infrastructure.</h2>
-    <p class="text-body">I specialize in owning complex technical stacks from zero to scale—bridging deep architectural engineering with aggressive product strategy.</p>
-    <p class="text-body">My open-source work and architectural experiments live on <a href="https://github.com/mayowa-kalejaiye" target="_blank" rel="noopener noreferrer" class="link-underline">GitHub</a>. The formal history of my work is over on <a href="https://www.linkedin.com/in/mayowa-kalejaiye/" target="_blank" rel="noopener noreferrer" class="link-underline">LinkedIn</a>, and if you just want the hard facts, you can <a href="./Oluwamayowa-Kalejaiye-CV.pdf" download class="link-underline">download my CV</a>.</p>
+  <section id="intro" class="hero">
+    <div>
+      <h1 class="hero-name">Mayowa Kalejaiye</h1>
+      <p class="hero-role">Software &amp; AI Engineer</p>
+    </div>
+
+    <h2 class="hero-headline">I engineer scalable<br/>systems and real-time<br/>AI infrastructure.</h2>
+
+    <p class="text-body">I work across backend engineering and applied AI&mdash;turning complex product requirements into high-throughput APIs, real-time engines and production-grade LLM integrations. Most of it ends up on <a href="https://github.com/mayowa-kalejaiye" target="_blank" rel="noopener noreferrer" class="link-underline">GitHub</a>. When an architecture decision won&rsquo;t leave me alone, I think out loud about it on <a href="https://x.com/MayowaSWE" target="_blank" rel="noopener noreferrer" class="link-underline">X</a>. The more formal telling lives on <a href="https://www.linkedin.com/in/mayowa-kalejaiye/" target="_blank" rel="noopener noreferrer" class="link-underline">LinkedIn</a>, and if you&rsquo;d rather skip the scrolling, the whole thing fits on <a href="./Oluwamayowa-Kalejaiye-CV.pdf" target="_blank" rel="noopener noreferrer" class="link-underline">my CV</a>.</p>
   </section>
 
   <section id="work">
-    <h2 class="section-title">Selected work</h2>
-    
-    <div class="slider-container">
-      <div class="slider">
-        
-        <a href="https://tradeoff.pxxl.run/" target="_blank" rel="noopener noreferrer" class="project-card">
-          <img src="images/fh1.webp" alt="Tradeoff Screenshot" class="project-image" loading="lazy">
-          <div class="project-gradient"></div>
-          <div class="project-content">
-            <div>
-              <div class="project-title">Tradeoff</div>
-              <div class="project-meta">Founder · System Architecture</div>
-            </div>
-            <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-          </div>
-        </a>
+    <div class="work-head">
+      <h2 class="label">Selected work</h2>
+      <a href="projects/index.html" class="view-all">All projects &nearr;</a>
+    </div>
 
-        <a href="https://formhookapp.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-card">
-          <img src="images/fh1.webp" alt="FormHook Screenshot" class="project-image" loading="lazy">
-          <div class="project-gradient"></div>
-          <div class="project-content">
-            <div>
-              <div class="project-title">FormHook</div>
-              <div class="project-meta">API Architecture · Serverless</div>
-            </div>
-            <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-          </div>
-        </a>
+    <div class="track-wrap">
+      <ul class="work-track">
 
-        <a href="https://closetai-three.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-card">
-          <img src="images/cl1.webp" alt="ClosetAI Screenshot" class="project-image" loading="lazy">
-          <div class="project-gradient"></div>
-          <div class="project-content">
-            <div>
-              <div class="project-title">ClosetAI</div>
-              <div class="project-meta">FastAPI · NVIDIA NIM · AI Inference</div>
+        <li>
+          <a href="projects/tradeoff.html" class="project-card">
+            <img src="images/tr1.png" alt="Tradeoff" class="project-image" loading="lazy">
+            <div class="project-gradient"></div>
+            <div class="project-content">
+              <div>
+                <div class="project-title">Tradeoff</div>
+                <div class="project-meta">Systems · AI</div>
+              </div>
+              <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
             </div>
-            <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-          </div>
-        </a>
-        
-        <a href="https://pinpnt.vercel.app" target="_blank" rel="noopener noreferrer" class="project-card">
-          <img src="images/pp1.webp" alt="PinPoint Screenshot" class="project-image" loading="lazy">
-          <div class="project-gradient"></div>
-          <div class="project-content">
-            <div>
-              <div class="project-title">PinPoint</div>
-              <div class="project-meta">Real-time DB · Logistics Engine</div>
-            </div>
-            <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-          </div>
-        </a>
+          </a>
+        </li>
 
-      </div>
+        <li>
+          <a href="projects/spatialcare.html" class="project-card">
+            <img src="images/sp1.png" alt="SpatialCare" class="project-image" loading="lazy">
+            <div class="project-gradient"></div>
+            <div class="project-content">
+              <div>
+                <div class="project-title">SpatialCare</div>
+                <div class="project-meta">FastAPI &middot; Gemini RAG</div>
+              </div>
+              <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a href="projects/formhook.html" class="project-card">
+            <img src="images/fh2.webp" alt="FormHook screenshot" class="project-image" loading="lazy">
+            <div class="project-gradient"></div>
+            <div class="project-content">
+              <div>
+                <div class="project-title">FormHook</div>
+                <div class="project-meta">Serverless · Form Backend</div>
+              </div>
+              <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a href="projects/closetai.html" class="project-card">
+            <img src="images/cl1.webp" alt="ClosetAI screenshot" class="project-image" loading="lazy">
+            <div class="project-gradient"></div>
+            <div class="project-content">
+              <div>
+                <div class="project-title">ClosetAI</div>
+                <div class="project-meta">FastAPI · NVIDIA NeMo</div>
+              </div>
+              <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a href="projects/pinpoint.html" class="project-card">
+            <img src="images/pp1.png" alt="PinPoint screenshot" class="project-image" loading="lazy">
+            <div class="project-gradient"></div>
+            <div class="project-content">
+              <div>
+                <div class="project-title">PinPoint</div>
+                <div class="project-meta">Real-time · GPS Tracking</div>
+              </div>
+              <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a href="projects/creatinn-academy.html" class="project-card">
+            <img src="images/ca1.webp" alt="CreatINN Academy screenshot" class="project-image" loading="lazy">
+            <div class="project-gradient"></div>
+            <div class="project-content">
+              <div>
+                <div class="project-title">CreatINN Academy</div>
+                <div class="project-meta">Next.js · TypeScript · Prisma</div>
+              </div>
+              <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+            </div>
+          </a>
+        </li>
+
+        <li>
+          <a href="projects/index.html" class="project-more">
+            <span class="project-more-label">More</span>
+            <span class="project-more-title">See all projects</span>
+            <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <section id="approach">
+    <h2 class="label-light">Approach</h2>
+    <div class="text-body" style="margin-bottom: 32px;">
+      <p>I build things around real product requirements, not arbitrary UIs&mdash;and I&rsquo;m fully responsible for what runs in the system, from the database to the deployed code. My practice is informed by both software engineering and applied AI, so I focus on high-throughput backend systems, tracking infrastructure and deployed LLM stacks&mdash;fit for purpose, not the other way around.</p>
+      <p>I work in the domain of reusable systems, where APIs, auth and real-time infrastructure get the same level of detail as the core product, iterated upon in tandem with it in production.</p>
     </div>
   </section>
 
   <section id="experience">
-    <h2 class="section-title">Approach &amp; Experience</h2>
-    
+    <h2 class="label">Experience</h2>
+
     <div class="exp-list">
-      
+
       <div class="exp-item">
         <div>
           <div class="exp-role">Founder</div>
           <div class="exp-company">Tradeoff</div>
           <div class="exp-desc">
-            <p>Architected an AI-powered technical feasibility advisor that acts as a Staff Engineer for startups, automating due diligence and uncovering existential risks.</p>
-            <p>Engineered complex system design pipelines capable of processing product briefs into robust architectural recommendations and tradeoff analyses.</p>
+            <p>Architected an AI-powered technical feasibility advisor that acts as a Staff Engineer for startups&mdash;automating due diligence and uncovering existential risks before they become expensive.</p>
+            <p>Built a deterministic architecture graph that evaluates competing system constraints to generate defensible tech stacks, capability requirements and tradeoff analyses.</p>
           </div>
         </div>
         <div class="exp-meta">
-          <span>Feb 2026 — Present</span>
+          <span>Feb 2026 &mdash; Present</span>
           <span>Lagos, Nigeria</span>
-          <div style="display:flex; justify-content: flex-end"><span class="exp-badge current">Current</span></div>
+          <span class="exp-badge current">Current</span>
         </div>
       </div>
 
@@ -589,14 +859,14 @@
           <div class="exp-role">AI Systems Engineer</div>
           <div class="exp-company">Zummit Africa</div>
           <div class="exp-desc">
-            <p>Built AI-driven systems automating legal document classification and prioritization, driving massive efficiency gains across internal operations.</p>
-            <p>Deployed high-throughput ML inference pipelines and real-time APIs, eliminating manual workloads and bottlenecks.</p>
+            <p>Built AI-driven systems automating legal document classification and prioritization, driving large efficiency gains across internal operations.</p>
+            <p>Deployed high-throughput ML inference pipelines and real-time APIs, removing manual workloads and bottlenecks.</p>
           </div>
         </div>
         <div class="exp-meta">
-          <span>Oct 2025 — Present</span>
+          <span>Oct 2025 &mdash; Jul 2026</span>
           <span>Lekki, Nigeria</span>
-          <div style="display:flex; justify-content: flex-end"><span class="exp-badge current">Current</span></div>
+          <span class="exp-badge">1 yr</span>
         </div>
       </div>
 
@@ -605,127 +875,142 @@
           <div class="exp-role">Lead Frontend Engineer</div>
           <div class="exp-company">tlcc.ng</div>
           <div class="exp-desc">
-            <p>Owned the complete frontend platform architecture, serving as the sole engineer responsible for client-side performance and user experience.</p>
+            <p>Owned the frontend platform architecture as the sole engineer responsible for client-side performance and user experience.</p>
             <p>Delivered highly responsive, complex interfaces bridging backend APIs with dynamic, real-time content delivery.</p>
           </div>
         </div>
         <div class="exp-meta">
-          <span>Oct 2025 — Present</span>
+          <span>Oct 2025 &mdash; Present</span>
           <span>Ikeja, Lagos</span>
-          <div style="display:flex; justify-content: flex-end"><span class="exp-badge current">Current</span></div>
+          <span class="exp-badge">Contract</span>
         </div>
       </div>
 
       <div class="exp-item">
         <div>
           <div class="exp-role">Backend Engineering Lead</div>
-          <div class="exp-company">CuratED — TCU 7.0</div>
+          <div class="exp-company">CuratED &mdash; TCU 7.0</div>
           <div class="exp-desc">
             <p>Designed and deployed scalable Django REST APIs powering content aggregation and complex progress tracking systems.</p>
-            <p>Architected modular backend services and enforced strict API contracts, drastically reducing integration friction for frontend consumption.</p>
+            <p>Architected modular backend services and enforced strict API contracts, drastically reducing integration friction for frontend teams.</p>
           </div>
         </div>
         <div class="exp-meta">
-          <span>Apr 2025 — Aug 2025</span>
+          <span>Apr 2025 &mdash; Aug 2025</span>
           <span>Lagos, Nigeria</span>
-          <div style="display:flex; justify-content: flex-end"><span class="exp-badge">5 mos</span></div>
+          <span class="exp-badge">5 mos</span>
         </div>
       </div>
-      
+
     </div>
   </section>
 
-  <section id="skills">
-    <h2 class="section-title">Capabilities</h2>
-    
-    <div class="skills-grid">
-      <div>
-        <h3 class="skill-category">Languages</h3>
-        <ul class="skill-list">
-          <li>Python</li>
-          <li>TypeScript</li>
-          <li>JavaScript</li>
-          <li>HTML &amp; CSS</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="skill-category">Backend</h3>
-        <ul class="skill-list">
-          <li>FastAPI</li>
-          <li>Django</li>
-          <li>Node.js</li>
-          <li>REST Architecture</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="skill-category">AI / ML Infrastructure</h3>
-        <ul class="skill-list">
-          <li>LLM Integrations</li>
-          <li>NVIDIA NIM</li>
-          <li>Computer Vision</li>
-          <li>PyTorch</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="skill-category">Databases</h3>
-        <ul class="skill-list">
-          <li>PostgreSQL</li>
-          <li>MongoDB</li>
-          <li>Supabase</li>
-          <li>Firebase</li>
-        </ul>
-      </div>
-    </div>
+  <section id="capabilities">
+    <h2 class="label-light">Capabilities</h2>
+
+    <ul class="cap-list">
+      <li class="cap-item">
+        <span class="cap-dot"></span>
+        <div>
+          <div class="cap-title">Scalable Backend Systems</div>
+          <div class="cap-desc">High-throughput APIs, guaranteed retry architecture and distributed event processing that hold up when the load is real.</div>
+        </div>
+      </li>
+      <li class="cap-item">
+        <span class="cap-dot"></span>
+        <div>
+          <div class="cap-title">AI / LLM Infrastructure</div>
+          <div class="cap-desc">Production LLM integrations, NVIDIA NeMo, computer vision and vector embedding pipelines wired into products people use.</div>
+        </div>
+      </li>
+      <li class="cap-item">
+        <span class="cap-dot"></span>
+        <div>
+          <div class="cap-title">Real-time Engineering</div>
+          <div class="cap-desc">Low-latency WebSockets, live GPS tracking and data synchronization across thousands of concurrent connections.</div>
+        </div>
+      </li>
+      <li class="cap-item">
+        <span class="cap-dot"></span>
+        <div>
+          <div class="cap-title">Data-Driven Interfaces</div>
+          <div class="cap-desc">Interfaces wired to real APIs, with loading, empty and error states designed as part of the experience rather than an afterthought.</div>
+        </div>
+      </li>
+      <li class="cap-item">
+        <span class="cap-dot"></span>
+        <div>
+          <div class="cap-title">Zero-to-Scale Ownership</div>
+          <div class="cap-desc">Taking an idea that is still a little unclear and turning it into something people can actually use&mdash;then keeping it running as it grows.</div>
+        </div>
+      </li>
+    </ul>
   </section>
 
-  <section id="what-i-care-about">
-    <h2 class="section-title">What I care about</h2>
-    <div class="text-body" style="max-width: 700px;">
-      <p style="margin-bottom: 1.5rem;"><strong>Performance as a feature.</strong> The speed of an application dictates the upper bound of its user experience. I care deeply about optimizing database queries, reducing latency, and serving assets efficiently.</p>
-      <p style="margin-bottom: 1.5rem;"><strong>Developer Experience (DX).</strong> Code is read infinitely more times than it is written. I obsess over clean architecture, strong typing, and tooling that makes other developers faster.</p>
-      <p><strong>Measurable Impact.</strong> Engineering for the sake of engineering is a waste of time. I build systems designed to solve actual business problems, unlock scale, and drive revenue.</p>
+  <section id="feed">
+    <div class="feed-head">
+      <h2 class="label-light">My feed</h2>
+      <a href="https://x.com/MayowaSWE" target="_blank" rel="noopener noreferrer" class="view-all">View all &nearr;</a>
     </div>
+
+    <ul class="feed-list">
+      <li>
+        <a href="https://x.com/MayowaSWE/status/2082443072718200888" target="_blank" rel="noopener noreferrer" class="feed-title">My first hackathon &mdash; built SpatialCare in 3 days</a>
+        <p class="feed-meta"><span class="feed-date">29 JUL 2026</span>AI helping Nigerians find verified BHCPF facilities in Pidgin, Hausa, Yoruba or Igbo. Backend + AI, solo build.</p>
+      </li>
+      <li>
+        <a href="https://x.com/MayowaSWE/status/2078101019192328323" target="_blank" rel="noopener noreferrer" class="feed-title">That&rsquo;s why I built Tradeoff &mdash; it pressure-tests your architecture</a>
+        <p class="feed-meta"><span class="feed-date">17 JUL 2026</span>We jump into code without critiquing the design. Tradeoff help you pressure-test the architecture before you build it.</p>
+      </li>
+      <li>
+        <a href="https://x.com/MayowaSWE/status/2066428954722873536" target="_blank" rel="noopener noreferrer" class="feed-title">If you&rsquo;re into AI engineering &mdash; building real AI systems, beyond wrappers</a>
+        <p class="feed-meta"><span class="feed-date">15 JUN 2026</span>18-year-old builder grinding and shipping in public. Let&rsquo;s connect.</p>
+      </li>
+    </ul>
   </section>
 
-  <hr style="border: none; border-top: 1px solid var(--border); margin: 6rem 0 4rem 0;">
-  
-  <div style="margin-bottom: 6rem;">
-    <p class="display-title" style="font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 2rem;">If that sounds like your kind of problem, the calendar is open.</p>
-    <a href="https://calendly.com/kalejaiyemayowa3/30min" target="_blank" rel="noopener noreferrer" class="link-underline" style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; text-transform: uppercase;">Book a 30-minute call ↗</a>
-  </div>
+  <section id="care">
+    <h2 class="label-light">What I care about</h2>
 
-  <footer>
-    <span>Mayowa Kalejaiye</span>
-    <span>© 2026</span>
-  </footer>
+    <div class="text-body" style="margin-bottom: 32px;">
+      <p>I&rsquo;m best when working at the intersection of engineering strategy and tactics. I take a vague idea and turn it into something that can really be used&mdash;deciding on the architecture, implementing the AI, and generally wasting too much time with the details that make things feel right.</p>
+      <p>All of this is to say that performance is a feature, code is read and re-read many times, and engineering that does not ship is wasted.</p>
+    </div>
+
+    <p class="care-closing">If that sounds like your kind of problem, the calendar is open.</p>
+    <a href="https://calendly.com/kalejaiyemayowa3/30min" target="_blank" rel="noopener noreferrer" class="cta">Book a 30-minute call</a>
+  </section>
 
 </main>
 
-
+<footer class="footer">
+  <a href="#" class="footer-brand">&copy; 2026 Mayowa Kalejaiye</a>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+    <svg class="icon icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+    <svg class="icon icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+  </button>
+</footer>
 
 <script>
-  // Proximity ScrollSpy for Sidebar
+  const toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+</script>
+
+<script>
   const dashes = Array.from(document.querySelectorAll('.nav-line, .nav-spacer-line'));
-  const sections = Array.from(document.querySelectorAll('section'));
-  
+
   function updateSidebar() {
-    // Calculate scroll progress (0 to 1)
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    
-    // Fallback if doc is not scrollable
     const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) : 0;
-    
-    // Determine which dash should be active based on scroll percentage
-    const activeIndex = Math.min(
-      Math.floor(scrollPercent * dashes.length),
-      dashes.length - 1
-    );
+    const activeIndex = Math.min(Math.floor(scrollPercent * dashes.length), dashes.length - 1);
 
     dashes.forEach((dash, index) => {
       const distance = Math.abs(index - activeIndex);
-      
-      // Reset inline styles
       dash.style.transform = '';
       dash.style.backgroundColor = '';
       dash.style.height = '';
@@ -736,7 +1021,7 @@
         dash.style.height = '2px';
       } else if (distance === 1) {
         dash.style.transform = 'scaleX(0.3)';
-        dash.style.backgroundColor = 'var(--fg)';
+        dash.style.backgroundColor = 'var(--foreground)';
       } else if (distance === 2) {
         dash.style.transform = 'scaleX(0.25)';
       } else {
@@ -747,7 +1032,6 @@
 
   window.addEventListener('scroll', updateSidebar, { passive: true });
   window.addEventListener('resize', updateSidebar);
-  // Initial call
   updateSidebar();
 </script>
 </body>

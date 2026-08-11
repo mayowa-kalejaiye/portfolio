@@ -1,91 +1,102 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>FormHook — Case Study — Mayowa Kalejaiye</title>
-  <meta name="description" content="Case study: FormHook — lightweight form backend service by Mayowa Kalejaiye">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/site.css">
-  <link rel="stylesheet" href="/assets/css/project-overrides.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FormHook — Case Study — Mayowa Kalejaiye</title>
+<meta name="description" content="Case study: FormHook — lightweight form backend service for developers. Built by Mayowa Kalejaiye.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+
+<script>
+(function(){try{var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark';}})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/case.css">
 </head>
 <body>
-  <nav class="site-nav">
-    <a class="site-brand" href="/">MK.DEV</a>
-    <div class="site-links">
-      <a href="/">Home</a>
-      <a href="/#projects">Projects</a>
-      <a href="/#contact">Contact</a>
-      <a href="https://github.com/mayowa-kalejaiye" target="_blank" rel="noopener">GitHub ↗</a>
-    </div>
-  </nav>
 
-  <main class="page-shell">
-    <div class="container">
-      <a class="back-link" href="/#projects">← Back to portfolio</a>
-      <div class="project-layout project-layout--hero">
-        <div>
-          <div class="case-sub">Case Study</div>
-          <h1 class="case-title">FormHook</h1>
-          <p class="case-desc">FormHook is a lightweight form backend service for developers that removes the work of building submission plumbing, dashboards, and webhooks from scratch.</p>
-          <div class="meta-row">
-            <a class="mbtn mbtn-s" href="https://formhookapp.vercel.app/" target="_blank" rel="noopener">Open Live</a>
-            <a class="mbtn mbtn-g" href="/#projects">See More Projects</a>
-          </div>
-          <div class="tags"><span class="ptag">Next.js</span><span class="ptag">Tailwind CSS</span><span class="ptag">Supabase</span><span class="ptag">Serverless</span></div>
-        </div>
-        <div class="project-gallery" data-gallery data-alt-prefix="FormHook" data-slides="/images/fh1.png,/images/fh2.png,/images/fh3.png,/images/fh4.png,/images/fh5.png" data-webp="/images/fh1.webp,/images/fh2.webp,/images/fh3.webp,/images/fh4.webp,/images/fh5.webp">
-          <div class="gallery-viewport"></div>
-          <div class="gallery-controls">
-            <button class="gallery-btn" type="button" data-gallery-prev>Prev</button>
-            <div class="gallery-status"><span data-gallery-index>1</span> / <span data-gallery-total>5</span></div>
-            <button class="gallery-btn" type="button" data-gallery-next>Next</button>
-          </div>
-        </div>
-      </div>
+<header class="case-top">
+  <a class="brand" href="../index.html">Mayowa Kalejaiye</a>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+    <svg class="icon icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+    <svg class="icon icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+  </button>
+</header>
 
-      <section class="case-row case-gap">
-        <div>
-          <h2>Context</h2>
-          <p class="case-desc">FormHook started from a simple but real problem: small teams and solo developers often need form capture, email/webhook delivery, and a response dashboard long before they want to build a custom backend.</p>
-          <h2>What I built</h2>
-          <p class="case-desc">I designed a lightweight form backend with a public submission endpoint, a private dashboard for reviewing responses, webhook delivery for automation, and CSV export for offline handling. The product is intentionally small enough to set up quickly but flexible enough to sit inside a real workflow.</p>
-          <h2>Why this approach</h2>
-          <p class="case-desc">Next.js and serverless APIs kept the app deployment-friendly, while Supabase handled persistence without adding operational complexity. Tailwind let me move fast on the interface and keep the dashboard clean and easy to scan.</p>
-        </div>
-        <aside>
-          <h2>Role & scope</h2>
-          <p class="case-desc">I handled the product thinking, frontend structure, backend integration, and the submission flow from capture to export.</p>
-          <div class="tags"><span class="ptag">Product Design</span><span class="ptag">Frontend</span><span class="ptag">API Flow</span><span class="ptag">Dashboard UX</span></div>
-          <p class="case-meta">Tech: Next.js, Tailwind CSS, Supabase, Serverless APIs</p>
-        </aside>
-      </section>
+<main class="case-main">
+  <a class="back-link" href="../index.html">&larr; Back to portfolio</a>
 
-      <section class="case-row case-gap">
-        <div>
-          <h2>Key features</h2>
-          <ul class="case-desc">
-            <li>Public form handling with a simple submission pipeline.</li>
-            <li>Dashboard views for reviewing, filtering, and exporting responses.</li>
-            <li>Webhook-ready delivery so teams can connect automations.</li>
-            <li>Storage backed by Supabase to keep the product lean and maintainable.</li>
-          </ul>
-        </div>
-        <aside>
-          <h2>Gallery guide</h2>
-          <p class="case-desc">The screenshots walk through the landing page, form setup, response management, and integration screens so the project reads like a product story rather than a single screenshot.</p>
-        </aside>
-      </section>
-    </div>
-  </main>
+  <div class="case-sub">Case Study &middot; Full-Stack</div>
+  <h1 class="case-title">FormHook</h1>
+  <p class="case-description">A lightweight form backend that does the plumbing for you&mdash;public submission endpoint, a dashboard for your responses, webhook delivery and CSV export. Small enough to set up in minutes, flexible enough for a real workflow.</p>
 
-  <footer class="site-footer">
-    <p>© 2026 Mayowa Kalejaiye</p>
-    <p>Software &amp; AI Engineer — Lagos, Nigeria</p>
-  </footer>
+  <div class="case-links">
+    <a class="case-link" href="https://formhookapp.vercel.app/" target="_blank" rel="noopener noreferrer">Visit site &nearr;</a>
+  </div>
 
-  <script src="/assets/js/project-gallery.js" defer></script>
+  <div class="case-tags">
+    <span class="case-tag">Next.js</span>
+    <span class="case-tag">Supabase</span>
+    <span class="case-tag">Serverless</span>
+    <span class="case-tag">API Design</span>
+  </div>
+
+  <div class="case-hero-image">
+    <img src="../images/fh1.webp" alt="FormHook">
+  </div>
+
+  <div class="gallery">
+    <div class="gallery-item"><img src="../images/fh2.webp" alt="FormHook dashboard"></div>
+    <div class="gallery-item"><img src="../images/fh3.webp" alt="FormHook integrations"></div>
+    <div class="gallery-item"><img src="../images/fh4.webp" alt="FormHook setup"></div>
+    <div class="gallery-item"><img src="../images/fh5.webp" alt="FormHook flow"></div>
+  </div>
+
+  <div class="case-body">
+
+    <section class="case-section">
+      <h2 class="case-h2">Context</h2>
+      <p class="case-p">Small teams and solo developers often need form capture, email or webhook delivery, and a response dashboard long before they want to build a custom backend. FormHook covers exactly that gap&mdash;intentionally small, quick to set up, flexible enough for real use.</p>
+    </section>
+
+    <section class="case-section">
+      <h2 class="case-h2">What I built</h2>
+      <p class="case-p">A form backend with a public submission endpoint, a private dashboard for reviewing responses, webhook delivery for automation, and CSV export for offline handling. Next.js and serverless APIs kept the app deployment-friendly, while Supabase handled persistence without adding operational complexity.</p>
+    </section>
+
+    <section class="case-section">
+      <h2 class="case-h2">Why this approach</h2>
+      <p class="case-p">Next.js and serverless kept deployment boring and reliable, Supabase carried persistence with zero ops, and a clean dashboard made responses easy to scan. The product is shaped around the job it does, not the stack.</p>
+    </section>
+
+    <section class="case-section">
+      <h2 class="case-h2">Role &amp; scope</h2>
+      <p class="case-p">Product thinking, frontend structure, backend integration, and the submission flow from capture to export.</p>
+    </section>
+
+    <section class="case-section">
+      <h2 class="case-h2">Result</h2>
+      <p class="case-p">A lean developer utility that removes the busywork of form plumbing&mdash;set up in minutes and ready to drop straight into an existing workflow.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="case-footer">
+  <span>&copy; 2026 Mayowa Kalejaiye</span>
+  <a class="back-link" href="#" style="margin-bottom: 0;">Back to top &uarr;</a>
+</footer>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+</script>
 </body>
 </html>
