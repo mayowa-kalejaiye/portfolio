@@ -18,7 +18,7 @@
     --fg-muted: #A1A1AA;
     --border: #27272A;
     --border-strong: #3F3F46;
-    --accent: #E4E4E7;
+    --accent: #C7FE01;
   }
 
   *, *::before, *::after {
@@ -58,20 +58,22 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    pointer-events: auto;
   }
 
   .nav-item {
     display: flex;
     align-items: center;
-    height: 24px;
+    height: 1px;
+    width: 110px;
     background: transparent;
     border: none;
     cursor: pointer;
     text-decoration: none;
     outline: none;
-    margin: -12px 0; /* Tighten visual gap for the connecting line illusion */
-    padding: 12px 0;
-    position: relative;
+    margin: -0.75rem 0; /* -my-3 */
+    padding: 0.75rem 0; /* py-3 */
+    box-sizing: content-box;
   }
 
   .nav-line {
@@ -80,8 +82,8 @@
     background-color: var(--border-strong);
     width: 110px;
     transform-origin: left center;
-    transform: scaleX(0.25);
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transform: scaleX(0.27);
+    transition: transform 0.15s ease, background-color 0.15s ease;
   }
 
   .nav-item:hover .nav-line,
@@ -91,8 +93,8 @@
   }
 
   .nav-item.active .nav-line {
-    transform: scaleX(0.5);
-    background-color: var(--fg);
+    transform: scaleX(0.36);
+    background-color: var(--accent);
     height: 2px;
   }
 
@@ -106,10 +108,10 @@
   .nav-spacer-line {
     display: block;
     height: 1px;
-    background-color: var(--border);
+    background-color: var(--border-strong);
     width: 110px;
     transform-origin: left center;
-    transform: scaleX(0.25);
+    transform: scaleX(0.22);
   }
 
   /* Main Content Layout */
@@ -406,30 +408,33 @@
 </head>
 <body>
 
-<aside class="sidebar">
+<aside class="sidebar" style="pointer-events: none;">
   <nav class="nav-menu" aria-label="Page sections">
-    <a href="#intro" class="nav-item active" aria-label="Go to Introduction">
+    <a href="#intro" class="nav-item active" aria-label="Go to Introduction" title="Introduction">
       <span class="nav-line"></span>
     </a>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     
-    <a href="#work" class="nav-item" aria-label="Go to Selected work">
+    <a href="#work" class="nav-item" aria-label="Go to Selected work" title="Selected work">
       <span class="nav-line"></span>
     </a>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     
-    <a href="#experience" class="nav-item" aria-label="Go to Experience">
+    <a href="#experience" class="nav-item" aria-label="Go to Experience" title="Experience">
       <span class="nav-line"></span>
     </a>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
     
-    <a href="#skills" class="nav-item" aria-label="Go to Capabilities">
+    <a href="#skills" class="nav-item" aria-label="Go to Capabilities" title="Capabilities">
       <span class="nav-line"></span>
     </a>
   </nav>
