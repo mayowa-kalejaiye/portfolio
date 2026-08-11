@@ -707,6 +707,102 @@
       padding-right: 16px;
     }
   }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .lightbox.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lb-stage {
+    margin: 0;
+    max-width: min(90vw, 1200px);
+    max-height: 82vh;
+  }
+
+  .lb-stage img {
+    display: block;
+    max-width: 100%;
+    max-height: 82vh;
+    border-radius: 6px;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+  }
+
+  .lb-close,
+  .lb-prev,
+  .lb-next {
+    position: fixed;
+    z-index: 1001;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .lb-close:hover,
+  .lb-prev:hover,
+  .lb-next:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .lb-close {
+    top: 20px;
+    right: 20px;
+  }
+
+  .lb-prev {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .lb-next {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .lb-count {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  @media (max-width: 640px) {
+    .lb-prev {
+      left: 10px;
+    }
+    .lb-next {
+      right: 10px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -799,7 +895,7 @@
             <div class="project-content">
               <div>
                 <div class="project-title">SpatialCare</div>
-                <div class="project-meta">FastAPI &middot; Gemini RAG</div>
+                <div class="project-meta">FastAPI &middot; RAG &middot; Gemini</div>
               </div>
               <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
             </div>
@@ -915,7 +1011,7 @@
         <div class="exp-meta">
           <span>Oct 2025 &mdash; Jul 2026</span>
           <span>Lekki, Nigeria</span>
-          <span class="exp-badge">1 yr</span>
+          <span class="exp-badge">10 mos</span>
         </div>
       </div>
 
