@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TLCC — Case Study — Mayowa Kalejaiye</title>
+<meta name="description" content="Case study: TLCC — website and digital platform for The Light Community Church. Frontend built by Mayowa Kalejaiye.">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+
+<script>
+(function(){try{var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark';}})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/case.css">
+</head>
+<body>
+
+<header class="case-top">
+  <a class="brand" href="../index.html">Mayowa Kalejaiye</a>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+    <svg class="icon icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+    <svg class="icon icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+  </button>
+</header>
+
+<main class="case-main">
+  <a class="back-link" href="../index.html">&larr; Back to portfolio</a>
+
+  <div class="case-sub">Case Study &middot; Client Build</div>
+  <h1 class="case-title">TLCC</h1>
+  <p class="case-description">The digital home of The Light Community Church&mdash;live services, sermons, devotionals, ministries, events and online giving&mdash;built to carry the church&rsquo;s reach beyond its Lagos base.</p>
+
+  <div class="case-links">
+    <a class="case-link" href="https://tlcc.ng" target="_blank" rel="noopener noreferrer">Visit site &nearr;</a>
+  </div>
+
+  <div class="case-tags">
+    <span class="case-tag">Next.js</span>
+    <span class="case-tag">TypeScript</span>
+    <span class="case-tag">Real-time</span>
+    <span class="case-tag">Performance</span>
+  </div>
+
+  <div class="case-hero-image">
+    <img src="../images/tl1.png" alt="TLCC">
+  </div>
+
+  <div class="gallery">
+    <div class="gallery-item"><img src="../images/tl2.png" alt="TLCC sermons"></div>
+    <div class="gallery-item"><img src="../images/tl3.png" alt="TLCC ministries"></div>
+    <div class="gallery-item"><img src="../images/tl4.png" alt="TLCC giving"></div>
+  </div>
+
+  <div class="case-body">
+
+    <section class="case-section">
+      <h2 class="case-h2">Context</h2>
+      <p class="case-p">The church streams sermons every Tuesday and Saturday at 9 PM, so its website had to match the reach of the broadcast&mdash;clear entry into sermons, devotionals, ministries and giving, fast enough that nobody leaves before the first page paints.</p>
+    </section>
+
+    <section class="case-section">
+      <h2 class="case-h2">What I built</h2>
+      <p class="case-p">The full frontend of the site: about, devotionals, ministries, events, sermons, a location/map page and a giving flow wired to Paystack and Flutterwave, plus a newsletter path and contact flows. Next.js and TypeScript kept the codebase structured, with the focus on client-side performance and dynamic, real-time content delivery.</p>
+    </section>
+
+    <section class="case-section">
+      <h2 class="case-h2">Why this approach</h2>
+      <p class="case-p">A ministry site lives or dies on speed and clarity. Pre-rendered pages where it counts, a tight real-time layer for live services and updates, and interactions kept simple enough that a visitor hits watch, give or subscribe in one or two taps.</p>
+    </section>
+
+    <section class="case-section">
+      <h2 class="case-h2">Role &amp; scope</h2>
+      <p class="case-p">Lead frontend engineering as the sole client-side engineer&mdash;platform architecture, performance and the user experience across every page.</p>
+    </section>
+
+    <section class="case-section">
+      <h2 class="case-h2">Result</h2>
+      <p class="case-p">A site that carries the church&rsquo;s mission online: sermons and live services reachable in seconds, giving frictionless, and a platform built to grow with the ministry.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="case-footer">
+  <span>&copy; 2026 Mayowa Kalejaiye</span>
+  <a class="back-link" href="#" style="margin-bottom: 0;">Back to top &uarr;</a>
+</footer>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+</script>
+<script src="../assets/js/case-lightbox.js" defer></script>
+</body>
+</html>

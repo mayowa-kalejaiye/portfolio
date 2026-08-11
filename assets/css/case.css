@@ -126,6 +126,22 @@ html[data-theme="light"] .icon-sun { display: none; }
   color: var(--accent);
 }
 
+.back-top {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.back-top:hover {
+  color: var(--accent);
+}
+
 .case-sub {
   font-weight: 300;
   font-size: 14px;
