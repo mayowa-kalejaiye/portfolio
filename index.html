@@ -636,31 +636,54 @@
 
 </main>
 
+
+
 <script>
-  // Simple ScrollSpy for Sidebar
-  const sections = document.querySelectorAll('section');
-  const navItems = document.querySelectorAll('.nav-item');
+  // Proximity ScrollSpy for Sidebar
+  const dashes = Array.from(document.querySelectorAll('.nav-line, .nav-spacer-line'));
+  const sections = Array.from(document.querySelectorAll('section'));
+  
+  function updateSidebar() {
+    // Calculate scroll progress (0 to 1)
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    
+    // Fallback if doc is not scrollable
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) : 0;
+    
+    // Determine which dash should be active based on scroll percentage
+    const activeIndex = Math.min(
+      Math.floor(scrollPercent * dashes.length),
+      dashes.length - 1
+    );
 
-  const observerOptions = {
-    root: null,
-    rootMargin: '-50% 0px -50% 0px',
-    threshold: 0
-  };
+    dashes.forEach((dash, index) => {
+      const distance = Math.abs(index - activeIndex);
+      
+      // Reset inline styles
+      dash.style.transform = '';
+      dash.style.backgroundColor = '';
+      dash.style.height = '';
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navItems.forEach(item => {
-          item.classList.remove('active');
-          if (item.getAttribute('href') === `#${entry.target.id}`) {
-            item.classList.add('active');
-          }
-        });
+      if (distance === 0) {
+        dash.style.transform = 'scaleX(0.36)';
+        dash.style.backgroundColor = 'var(--accent)';
+        dash.style.height = '2px';
+      } else if (distance === 1) {
+        dash.style.transform = 'scaleX(0.3)';
+        dash.style.backgroundColor = 'var(--fg)';
+      } else if (distance === 2) {
+        dash.style.transform = 'scaleX(0.25)';
+      } else {
+        dash.style.transform = 'scaleX(0.22)';
       }
     });
-  }, observerOptions);
+  }
 
-  sections.forEach(section => observer.observe(section));
+  window.addEventListener('scroll', updateSidebar, { passive: true });
+  window.addEventListener('resize', updateSidebar);
+  // Initial call
+  updateSidebar();
 </script>
 </body>
 </html>
