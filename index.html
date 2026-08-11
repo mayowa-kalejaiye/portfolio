@@ -8,382 +8,641 @@
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+<style>
   :root {
-    --bg: #0E0E0F;
-    --text: #ffffff;
-    --mid: #a0a0a0;
-    --light: #666666;
-    --rule: rgba(255, 255, 255, 0.1);
-    --accent: #C7FE01;
-    --btn-bg: #C7FE01;
-    --btn-text: #111110;
+    --bg: #0A0A0A;
+    --fg: #FFFFFF;
+    --fg-muted: #A1A1AA;
+    --border: #27272A;
+    --border-strong: #3F3F46;
+    --accent: #E4E4E7;
   }
 
-  html { scroll-behavior: smooth; }
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
   body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    font-size: 15px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+    display: flex;
+    min-height: 100vh;
   }
 
-  .page { max-width: 780px; margin: 0 auto; padding: 80px 40px 120px; }
+  /* Sidebar Layout */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 140px;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    z-index: 40;
+  }
 
-  /* ── Header ── */
-  header {
-    display: grid; grid-template-columns: 1fr auto; align-items: end;
-    padding-bottom: 48px; border-bottom: 1px solid var(--rule); margin-bottom: 64px;
-    gap: 24px; opacity: 0; transform: translateY(16px); animation: rise 0.6s ease forwards;
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
-  .name {
-    font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 6vw, 3.8rem);
-    letter-spacing: -0.02em; line-height: 1; color: var(--text);
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    margin: -12px 0; /* Tighten visual gap for the connecting line illusion */
+    padding: 12px 0;
+    position: relative;
   }
-  .name em {
-    font-style: italic; color: var(--mid);
+
+  .nav-line {
+    display: block;
+    height: 1px;
+    background-color: var(--border-strong);
+    width: 110px;
+    transform-origin: left center;
+    transform: scaleX(0.25);
+    transition: transform 0.2s ease, background-color 0.2s ease;
   }
-  .headline {
-    margin-top: 12px; font-size: 13px; font-weight: 400; color: var(--mid);
-    letter-spacing: 0.08em; text-transform: uppercase; font-family: 'DM Mono', monospace;
+
+  .nav-item:hover .nav-line,
+  .nav-item:focus-visible .nav-line {
+    transform: scaleX(0.4);
+    background-color: var(--fg);
   }
-  .contact { text-align: right; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--mid); line-height: 2; }
-  .contact a { color: var(--mid); text-decoration: none; transition: color 0.2s; }
-  .contact a:hover { color: var(--text); }
+
+  .nav-item.active .nav-line {
+    transform: scaleX(0.5);
+    background-color: var(--fg);
+    height: 2px;
+  }
+
+  .nav-spacer {
+    display: flex;
+    align-items: center;
+    height: 1px;
+    width: 110px;
+  }
   
-  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; justify-content: flex-end; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace;
-    font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--text); text-decoration: none; background: transparent;
-    border: 1px solid var(--rule); border-radius: 2px; padding: 8px 14px;
-    cursor: pointer; transition: border-color 0.2s, background 0.2s, color 0.2s;
+  .nav-spacer-line {
+    display: block;
+    height: 1px;
+    background-color: var(--border);
+    width: 110px;
+    transform-origin: left center;
+    transform: scaleX(0.25);
   }
-  .btn:hover { border-color: var(--text); }
-  .btn-primary { background: var(--btn-bg); color: var(--btn-text); border-color: var(--btn-bg); font-weight: 600; }
-  .btn-primary:hover { background: #b0e500; border-color: #b0e500; color: var(--btn-text); }
 
-  /* ── Sections ── */
-  section { margin-bottom: 56px; opacity: 0; transform: translateY(12px); animation: rise 0.5s ease forwards; }
-  section:nth-child(2) { animation-delay: 0.1s; }
-  section:nth-child(3) { animation-delay: 0.18s; }
-  section:nth-child(4) { animation-delay: 0.26s; }
-  section:nth-child(5) { animation-delay: 0.34s; }
-
-  .section-label {
-    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--light); margin-bottom: 24px;
+  /* Main Content Layout */
+  .main-content {
+    flex: 1;
+    margin-left: 140px; /* Offset for sidebar */
+    max-width: 900px;
+    padding: 6rem 2rem 8rem 2rem;
   }
-  .about-text { font-size: 16px; color: var(--mid); line-height: 1.8; max-width: 600px; font-weight: 300; }
-  .about-text strong { color: var(--text); font-weight: 500; }
 
-  /* ── Experience / Projects ── */
-  .job {
-    display: grid; grid-template-columns: 1fr auto; gap: 12px 24px;
-    padding: 28px 0; border-top: 1px solid var(--rule); transition: background 0.2s;
+  /* Typography */
+  h1, h2, h3 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.03em;
   }
-  .job:last-child { border-bottom: 1px solid var(--rule); }
-  .job-title { font-size: 15px; font-weight: 500; color: var(--text); letter-spacing: -0.01em; }
-  .job-company { font-size: 13px; color: var(--mid); margin-top: 3px; }
-  .job-skills { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--light); margin-top: 10px; letter-spacing: 0.04em; }
-  .job-right { text-align: right; flex-shrink: 0; }
-  .job-period { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--light); white-space: nowrap; }
-  .job-location { font-size: 12px; color: var(--light); margin-top: 4px; white-space: nowrap; }
+
+  .display-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg-muted);
+    margin-bottom: 2rem;
+  }
+
+  .text-body {
+    font-size: 1.125rem;
+    color: var(--fg-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    max-width: 650px;
+  }
+
+  a.link-underline {
+    color: var(--fg);
+    text-decoration: underline;
+    text-decoration-color: var(--border-strong);
+    text-underline-offset: 4px;
+    transition: color 0.2s, text-decoration-color 0.2s;
+  }
+
+  a.link-underline:hover {
+    text-decoration-color: var(--fg);
+  }
+
+  /* Header Links */
+  .header-meta {
+    margin-bottom: 4rem;
+  }
+  .header-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  .header-role {
+    font-size: 1rem;
+    color: var(--fg-muted);
+  }
+
+  /* Sections */
+  section {
+    margin-bottom: 8rem;
+    scroll-margin-top: 6rem;
+  }
+
+  /* Work Slider */
+  .slider-container {
+    width: 100vw;
+    margin-left: calc(-1 * (140px + 2rem)); /* Break out of main content constraints */
+    padding-left: calc(140px + 2rem);
+    padding-right: 2rem;
+  }
+
+  .slider {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 2rem;
+    scrollbar-width: none; /* Firefox */
+  }
+  .slider::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+
+  .project-card {
+    position: relative;
+    display: block;
+    width: min(504px, 82vw);
+    aspect-ratio: 504 / 297;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color 0.3s;
+  }
+
+  .project-card:hover {
+    border-color: var(--border-strong);
+  }
+
+  .project-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease-out;
+  }
+
+  .project-card:hover .project-image {
+    transform: scale(1.03);
+  }
+
+  .project-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.95) 100%);
+  }
+
+  .project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .project-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--fg);
+    letter-spacing: -0.02em;
+  }
+
+  .project-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--fg-muted);
+    margin-top: 0.25rem;
+  }
+
+  .project-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--fg-muted);
+    transition: transform 0.3s ease-out, color 0.3s ease-out;
+  }
+
+  .project-card:hover .project-icon {
+    transform: translate(2px, -2px);
+    color: var(--fg);
+  }
+
+  /* Experience List */
+  .exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
   
-  .badge {
-    display: inline-block; margin-top: 8px; padding: 3px 8px; border: 1px solid var(--rule);
-    border-radius: 2px; font-family: 'DM Mono', monospace; font-size: 10px;
-    color: var(--light); letter-spacing: 0.06em; text-transform: uppercase;
-  }
-  .badge.current { border-color: var(--accent); color: var(--accent); }
-
-  .job-links { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px 16px; }
-  .job-link {
-    font-family: 'DM Mono', monospace; font-size: 11px; color: var(--light); text-decoration: none;
-    letter-spacing: 0.04em; border-bottom: 1px solid var(--rule); padding-bottom: 1px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .job-link:hover { color: var(--accent); border-color: var(--accent); }
-  .job-link-label { font-size: 10px; color: var(--light); letter-spacing: 0.08em; text-transform: uppercase; margin-right: 4px; }
-
-  .job-bullets { margin-top: 12px; padding-left: 0; list-style: none; }
-  .job-bullets li { font-size: 13px; color: var(--mid); line-height: 1.7; padding: 3px 0 3px 16px; position: relative; font-weight: 300; }
-  .job-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--rule); font-size: 12px; }
-
-  /* ── Skills ── */
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0; }
-  .skill-group { padding: 20px 0; border-top: 1px solid var(--rule); }
-  .skill-cat {
-    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--light); margin-bottom: 10px;
-  }
-  .skill-list { font-size: 13px; color: var(--mid); line-height: 2; }
-
-  /* ── Footer ── */
-  footer {
-    border-top: 1px solid var(--rule); padding-top: 32px; display: flex; justify-content: space-between;
-    align-items: center; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--light);
-    letter-spacing: 0.06em; opacity: 0; animation: rise 0.5s ease 0.5s forwards;
-  }
-
-  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
-
-  @media (max-width: 600px) {
-    .page { padding: 48px 24px 80px; }
-    header { grid-template-columns: 1fr; }
-    .contact { text-align: left; }
-    .job { grid-template-columns: 1fr; }
-    .job-right { text-align: left; }
-    .actions { justify-content: flex-start; }
-  }
-
-  /* ── Print / PDF ── */
-  @media print {
-    @page { margin: 14mm; }
-    html { scroll-behavior: auto; }
-    body { font-size: 11.5px; -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #ffffff; color: #111110; }
-    .page { max-width: 100%; padding: 0; }
-    header, section, footer, .job { opacity: 1 !important; transform: none !important; animation: none !important; }
-    .actions { display: none !important; }
-    .job, .skill-group { break-inside: avoid; page-break-inside: avoid; }
-    .section-label { break-after: avoid; }
-    a { color: #111110; }
-    :root {
-      --bg: #ffffff;
-      --text: #111110;
-      --mid: #555552;
-      --light: #aaa9a4;
-      --rule: #e5e4e0;
-      --accent: #111110;
+  @media (min-width: 640px) {
+    .exp-item {
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
     }
-    .badge.current { color: #111110; border-color: #111110; }
+  }
+
+  .exp-role {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--fg);
+  }
+
+  .exp-company {
+    font-size: 1rem;
+    color: var(--fg-muted);
+  }
+
+  .exp-desc {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: var(--fg-muted);
+    line-height: 1.6;
+  }
+  
+  .exp-desc p {
+    margin-bottom: 0.75rem;
+  }
+
+  .exp-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: var(--fg-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  @media (min-width: 640px) {
+    .exp-meta {
+      text-align: right;
+    }
+  }
+
+  .exp-badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+    width: max-content;
+  }
+
+  .exp-badge.current {
+    color: var(--bg);
+    background-color: var(--fg);
+    border-color: var(--fg);
+  }
+
+  /* Skills & Footer */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem 2rem;
+  }
+
+  .skill-category {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: var(--fg);
+    margin-bottom: 1rem;
+  }
+
+  .skill-list {
+    list-style: none;
+    color: var(--fg-muted);
+    line-height: 1.8;
+  }
+
+  footer {
+    padding-top: 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: var(--fg-muted);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 1024px) {
+    .sidebar {
+      display: none;
+    }
+    .main-content {
+      margin-left: 0;
+      padding-top: 4rem;
+    }
+    .slider-container {
+      margin-left: -2rem;
+      padding-left: 2rem;
+    }
   }
 </style>
 </head>
 <body>
-<main class="page">
 
-  <header>
-    <div>
-      <h1 class="name">Mayowa <em>Kalejaiye</em></h1>
-      <p class="headline">Software &amp; AI Engineer</p>
-    </div>
-    <div class="contact">
-      <div><a href="tel:+2348074944583">+234-807-494-4583</a></div>
-      <div><a href="mailto:kalejaiyemayowa3@gmail.com">kalejaiyemayowa3@gmail.com</a></div>
-      <div>Lagos, Lagos 100283 · Nigeria</div>
-      <div><a href="https://github.com/mayowa-kalejaiye" target="_blank" rel="noopener">github.com/mayowa-kalejaiye</a></div>
-      <div class="actions">
-        <a href="./Oluwamayowa-Kalejaiye-CV.pdf" download="Oluwamayowa-Kalejaiye-CV.pdf" class="btn btn-primary" title="Download my CV as a PDF">
-          Download CV
-        </a>
-        <a class="btn" href="https://calendly.com/kalejaiyemayowa3/30min" target="_blank" rel="noopener">Book a Call</a>
-      </div>
-    </div>
+<aside class="sidebar">
+  <nav class="nav-menu" aria-label="Page sections">
+    <a href="#intro" class="nav-item active" aria-label="Go to Introduction">
+      <span class="nav-line"></span>
+    </a>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    
+    <a href="#work" class="nav-item" aria-label="Go to Selected work">
+      <span class="nav-line"></span>
+    </a>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    
+    <a href="#experience" class="nav-item" aria-label="Go to Experience">
+      <span class="nav-line"></span>
+    </a>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    <span class="nav-spacer"><span class="nav-spacer-line"></span></span>
+    
+    <a href="#skills" class="nav-item" aria-label="Go to Capabilities">
+      <span class="nav-line"></span>
+    </a>
+  </nav>
+</aside>
+
+<main class="main-content">
+  
+  <header class="header-meta">
+    <h1 class="header-name">Mayowa Kalejaiye</h1>
+    <p class="header-role">Software &amp; AI Systems Engineer</p>
   </header>
 
-  <section>
-    <p class="section-label">About</p>
-    <p class="about-text">
-      I’m Mayowa Kalejaiye, a Founder and AI Systems Engineer. I build high-throughput infrastructure, real-time tracking engines, and production-grade LLM integrations. I specialize in owning complex technical stacks from zero to scale—bridging deep architectural engineering with aggressive product strategy.
-    </p>
+  <section id="intro">
+    <h2 class="display-title">I engineer scalable <br/>backend systems and <br/>intelligent infrastructure.</h2>
+    <p class="text-body">I specialize in owning complex technical stacks from zero to scale—bridging deep architectural engineering with aggressive product strategy.</p>
+    <p class="text-body">My open-source work and architectural experiments live on <a href="https://github.com/mayowa-kalejaiye" target="_blank" rel="noopener noreferrer" class="link-underline">GitHub</a>. The formal history of my work is over on <a href="https://www.linkedin.com/in/mayowa-kalejaiye/" target="_blank" rel="noopener noreferrer" class="link-underline">LinkedIn</a>, and if you just want the hard facts, you can <a href="./Oluwamayowa-Kalejaiye-CV.pdf" download class="link-underline">download my CV</a>.</p>
   </section>
 
-  <section>
-    <p class="section-label">Experience</p>
+  <section id="work">
+    <h2 class="section-title">Selected work</h2>
+    
+    <div class="slider-container">
+      <div class="slider">
+        
+        <a href="https://tradeoff.pxxl.run/" target="_blank" rel="noopener noreferrer" class="project-card">
+          <img src="images/fh1.webp" alt="Tradeoff Screenshot" class="project-image" loading="lazy">
+          <div class="project-gradient"></div>
+          <div class="project-content">
+            <div>
+              <div class="project-title">Tradeoff</div>
+              <div class="project-meta">Founder · System Architecture</div>
+            </div>
+            <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+          </div>
+        </a>
 
-    <div class="job">
-      <div class="job-left">
-        <div class="job-title">Founder</div>
-        <div class="job-company">Tradeoff</div>
-        <div class="job-skills">Start-up Leadership · System Architecture · AI Integrations</div>
-        <div class="job-links">
-          <span class="job-link-label">Product</span><a href="https://tradeoff.pxxl.run/" target="_blank" class="job-link">tradeoff.pxxl.run</a>
-        </div>
-        <ul class="job-bullets">
-          <li>Architected an AI-powered technical feasibility advisor that acts as a Staff Engineer for startups, automating due diligence and uncovering existential risks.</li>
-          <li>Engineered complex system design pipelines capable of processing product briefs into robust architectural recommendations and tradeoff analyses.</li>
-          <li>Led full-stack product development, combining modern web frameworks with deep AI integrations for immediate engineering-informed business judgment.</li>
-        </ul>
-      </div>
-      <div class="job-right">
-        <div class="job-period">Feb 2026 — Present</div>
-        <div class="job-location">Lagos, Nigeria · Remote</div>
-        <span class="badge current">Current</span>
-      </div>
-    </div>
+        <a href="https://formhookapp.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-card">
+          <img src="images/fh1.webp" alt="FormHook Screenshot" class="project-image" loading="lazy">
+          <div class="project-gradient"></div>
+          <div class="project-content">
+            <div>
+              <div class="project-title">FormHook</div>
+              <div class="project-meta">API Architecture · Serverless</div>
+            </div>
+            <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+          </div>
+        </a>
 
-    <div class="job">
-      <div class="job-left">
-        <div class="job-title">AI Systems Engineer</div>
-        <div class="job-company">Zummit Africa</div>
-        <div class="job-skills">Machine Learning · Python · ML Infrastructure</div>
-        <ul class="job-bullets">
-          <li>Built AI-driven systems automating legal document classification and prioritization, driving massive efficiency gains across internal operations.</li>
-          <li>Deployed high-throughput ML inference pipelines and real-time APIs, eliminating manual workloads and bottlenecks.</li>
-          <li>Engineered secure, scalable AI production environments, consistently iterating on model accuracy and integration patterns.</li>
-        </ul>
-      </div>
-      <div class="job-right">
-        <div class="job-period">Oct 2025 — Present</div>
-        <div class="job-location">Lekki, Nigeria · Remote</div>
-        <span class="badge current">Current</span>
-      </div>
-    </div>
+        <a href="https://closetai-three.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-card">
+          <img src="images/cl1.webp" alt="ClosetAI Screenshot" class="project-image" loading="lazy">
+          <div class="project-gradient"></div>
+          <div class="project-content">
+            <div>
+              <div class="project-title">ClosetAI</div>
+              <div class="project-meta">FastAPI · NVIDIA NIM · AI Inference</div>
+            </div>
+            <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+          </div>
+        </a>
+        
+        <a href="https://pinpnt.vercel.app" target="_blank" rel="noopener noreferrer" class="project-card">
+          <img src="images/pp1.webp" alt="PinPoint Screenshot" class="project-image" loading="lazy">
+          <div class="project-gradient"></div>
+          <div class="project-content">
+            <div>
+              <div class="project-title">PinPoint</div>
+              <div class="project-meta">Real-time DB · Logistics Engine</div>
+            </div>
+            <svg class="project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+          </div>
+        </a>
 
-    <div class="job">
-      <div class="job-left">
-        <div class="job-title">Lead Frontend Engineer</div>
-        <div class="job-company">tlcc.ng</div>
-        <div class="job-skills">React · Frontend Architecture · Performance Optimization</div>
-        <div class="job-links">
-          <span class="job-link-label">Link</span><a href="https://tlcc.ng/" target="_blank" class="job-link">tlcc.ng</a>
-        </div>
-        <ul class="job-bullets">
-          <li>Owned the complete frontend platform architecture, serving as the sole engineer responsible for client-side performance and user experience.</li>
-          <li>Delivered highly responsive, complex interfaces bridging backend APIs with dynamic, real-time content delivery.</li>
-        </ul>
-      </div>
-      <div class="job-right">
-        <div class="job-period">Oct 2025 — Present</div>
-        <div class="job-location">Ikeja, Lagos, Nigeria · Remote</div>
-        <span class="badge current">Current</span>
-      </div>
-    </div>
-
-    <div class="job">
-      <div class="job-left">
-        <div class="job-title">Backend Engineering Lead</div>
-        <div class="job-company">CuratED — TCU 7.0</div>
-        <div class="job-skills">Django · REST APIs · Backend Architecture</div>
-        <ul class="job-bullets">
-          <li>Designed and deployed scalable Django REST APIs powering content aggregation and complex progress tracking systems.</li>
-          <li>Led development sprints, directed architectural decisions, and managed code quality across the engineering team.</li>
-          <li>Architected modular backend services and enforced strict API contracts, drastically reducing integration friction for frontend consumption.</li>
-        </ul>
-      </div>
-      <div class="job-right">
-        <div class="job-period">Apr 2025 — Aug 2025</div>
-        <div class="job-location">Lagos, Nigeria · Remote</div>
-        <span class="badge">5 mos</span>
-      </div>
-    </div>
-
-    <div class="job">
-      <div class="job-left">
-        <div class="job-title">Software Engineer</div>
-        <div class="job-company">HealthTech × Alabama A&M</div>
-        <div class="job-skills">Backend Development · API Design · Data Systems</div>
-        <ul class="job-bullets">
-          <li>Engineered core backend infrastructure supporting health reporting and critical resource coordination.</li>
-          <li>Designed and exposed RESTful APIs facilitating data collection, processing, and seamless cross-system integrations.</li>
-        </ul>
-      </div>
-      <div class="job-right">
-        <div class="job-period">Sep 2024 — Apr 2025</div>
-        <div class="job-location">Remote · Texas, United States</div>
-        <span class="badge">8 mos</span>
       </div>
     </div>
   </section>
 
-  <section>
-    <p class="section-label">Selected Projects</p>
-
-    <div class="job">
-      <div class="job-left">
-        <div class="job-title">FormHook</div>
-        <div class="job-company">Built a high-throughput event intake and webhook delivery system with guaranteed retry logic, so frontend teams can fire events without writing backend glue code for delivery, retries, or failure handling. Handles concurrent API loads and gives developers a single endpoint instead of building queue infrastructure from scratch.</div>
-        <div class="job-skills">Next.js · Tailwind CSS · FastAPI · Supabase · Serverless</div>
-        <div class="job-links">
-          <span class="job-link-label">Live</span><a href="https://formhookapp.vercel.app/" target="_blank" class="job-link">formhookapp.vercel.app</a>
+  <section id="experience">
+    <h2 class="section-title">Approach &amp; Experience</h2>
+    
+    <div class="exp-list">
+      
+      <div class="exp-item">
+        <div>
+          <div class="exp-role">Founder</div>
+          <div class="exp-company">Tradeoff</div>
+          <div class="exp-desc">
+            <p>Architected an AI-powered technical feasibility advisor that acts as a Staff Engineer for startups, automating due diligence and uncovering existential risks.</p>
+            <p>Engineered complex system design pipelines capable of processing product briefs into robust architectural recommendations and tradeoff analyses.</p>
+          </div>
+        </div>
+        <div class="exp-meta">
+          <span>Feb 2026 — Present</span>
+          <span>Lagos, Nigeria</span>
+          <div style="display:flex; justify-content: flex-end"><span class="exp-badge current">Current</span></div>
         </div>
       </div>
-      <div class="job-right">
-        <span class="badge">Form Backend</span>
-      </div>
-    </div>
 
-    <div class="job">
-      <div class="job-left">
-        <div class="job-title">PinPoint</div>
-        <div class="job-company">Built a real-time GPS tracking engine for logistics, syncing driver and customer views through Firebase's realtime database with anonymous authentication. Chose polling over WebSockets deliberately — a 1.5 to 2 second sync interval that's simple to debug and reliable at this scale. Routes calculate through OSRM for real road paths, with automatic rerouting once a driver drifts past 300 meters off course.</div>
-        <div class="job-skills">HTML · CSS · JavaScript · Firebase · OSRM · Geolocation</div>
-        <div class="job-links">
-          <span class="job-link-label">Live</span><a href="https://pinpnt.vercel.app" target="_blank" class="job-link">pinpnt.vercel.app</a>
+      <div class="exp-item">
+        <div>
+          <div class="exp-role">AI Systems Engineer</div>
+          <div class="exp-company">Zummit Africa</div>
+          <div class="exp-desc">
+            <p>Built AI-driven systems automating legal document classification and prioritization, driving massive efficiency gains across internal operations.</p>
+            <p>Deployed high-throughput ML inference pipelines and real-time APIs, eliminating manual workloads and bottlenecks.</p>
+          </div>
+        </div>
+        <div class="exp-meta">
+          <span>Oct 2025 — Present</span>
+          <span>Lekki, Nigeria</span>
+          <div style="display:flex; justify-content: flex-end"><span class="exp-badge current">Current</span></div>
         </div>
       </div>
-      <div class="job-right">
-        <span class="badge">Live Tracking</span>
-      </div>
-    </div>
 
-    <div class="job">
-      <div class="job-left">
-        <div class="job-title">ClosetAI</div>
-        <div class="job-company">Built an AI-powered outfit recommendation engine using Ministral 3 14B Instruct, a genuinely multimodal model served through NVIDIA NIM, handling both image understanding and structured attribute extraction in a single call. Backend runs a three-tier ranking fallback — full AI ranking, a lighter ML model once a user has real feedback history, and rule-based scoring underneath both — so the system always returns a usable result even when the top tier isn't available.</div>
-        <div class="job-skills">FastAPI · Next.js · PostgreSQL · Computer Vision · NVIDIA NIM</div>
-        <div class="job-links">
-          <span class="job-link-label">Live</span><a href="https://closetai-three.vercel.app/" target="_blank" class="job-link">closetai-three.vercel.app</a>
+      <div class="exp-item">
+        <div>
+          <div class="exp-role">Lead Frontend Engineer</div>
+          <div class="exp-company">tlcc.ng</div>
+          <div class="exp-desc">
+            <p>Owned the complete frontend platform architecture, serving as the sole engineer responsible for client-side performance and user experience.</p>
+            <p>Delivered highly responsive, complex interfaces bridging backend APIs with dynamic, real-time content delivery.</p>
+          </div>
+        </div>
+        <div class="exp-meta">
+          <span>Oct 2025 — Present</span>
+          <span>Ikeja, Lagos</span>
+          <div style="display:flex; justify-content: flex-end"><span class="exp-badge current">Current</span></div>
         </div>
       </div>
-      <div class="job-right">
-        <span class="badge">AI Product</span>
-      </div>
-    </div>
 
-    <div class="job">
-      <div class="job-left">
-        <div class="job-title">CreatINN Academy</div>
-        <div class="job-company">Built the complete digital infrastructure for a selective physical academy in Lagos. Developed a highly secure LMS managing admissions funnels, payment processing (₦100K+ cohorts), and exclusive digital content delivery.</div>
-        <div class="job-skills">Next.js · TypeScript · Tailwind CSS · Prisma · NextAuth</div>
-        <div class="job-links">
-          <span class="job-link-label">Live</span><a href="https://creatinnacademy.com" target="_blank" class="job-link">creatinnacademy.com</a>
+      <div class="exp-item">
+        <div>
+          <div class="exp-role">Backend Engineering Lead</div>
+          <div class="exp-company">CuratED — TCU 7.0</div>
+          <div class="exp-desc">
+            <p>Designed and deployed scalable Django REST APIs powering content aggregation and complex progress tracking systems.</p>
+            <p>Architected modular backend services and enforced strict API contracts, drastically reducing integration friction for frontend consumption.</p>
+          </div>
+        </div>
+        <div class="exp-meta">
+          <span>Apr 2025 — Aug 2025</span>
+          <span>Lagos, Nigeria</span>
+          <div style="display:flex; justify-content: flex-end"><span class="exp-badge">5 mos</span></div>
         </div>
       </div>
-      <div class="job-right">
-        <span class="badge">LMS Platform</span>
-      </div>
+      
     </div>
   </section>
 
-  <section>
-    <p class="section-label">Skills</p>
+  <section id="skills">
+    <h2 class="section-title">Capabilities</h2>
+    
     <div class="skills-grid">
-      <div class="skill-group">
-        <div class="skill-cat">Languages</div>
-        <div class="skill-list">JavaScript<br>TypeScript<br>Python<br>HTML &amp; CSS</div>
+      <div>
+        <h3 class="skill-category">Languages</h3>
+        <ul class="skill-list">
+          <li>Python</li>
+          <li>TypeScript</li>
+          <li>JavaScript</li>
+          <li>HTML &amp; CSS</li>
+        </ul>
       </div>
-      <div class="skill-group">
-        <div class="skill-cat">Frontend</div>
-        <div class="skill-list">React<br>Next.js<br>Tailwind CSS<br>Framer Motion</div>
+      <div>
+        <h3 class="skill-category">Backend</h3>
+        <ul class="skill-list">
+          <li>FastAPI</li>
+          <li>Django</li>
+          <li>Node.js</li>
+          <li>REST Architecture</li>
+        </ul>
       </div>
-      <div class="skill-group">
-        <div class="skill-cat">Backend</div>
-        <div class="skill-list">Node.js<br>FastAPI<br>Django<br>REST APIs</div>
+      <div>
+        <h3 class="skill-category">AI / ML Infrastructure</h3>
+        <ul class="skill-list">
+          <li>LLM Integrations</li>
+          <li>NVIDIA NIM</li>
+          <li>Computer Vision</li>
+          <li>PyTorch</li>
+        </ul>
       </div>
-      <div class="skill-group">
-        <div class="skill-cat">Databases</div>
-        <div class="skill-list">PostgreSQL<br>MongoDB<br>Firebase<br>Supabase</div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-cat">AI / ML</div>
-        <div class="skill-list">LLM Integrations<br>NVIDIA NIM<br>Computer Vision<br>PyTorch</div>
+      <div>
+        <h3 class="skill-category">Databases</h3>
+        <ul class="skill-list">
+          <li>PostgreSQL</li>
+          <li>MongoDB</li>
+          <li>Supabase</li>
+          <li>Firebase</li>
+        </ul>
       </div>
     </div>
   </section>
 
   <footer>
     <span>Mayowa Kalejaiye</span>
-    <span>2026</span>
+    <span>© 2026</span>
   </footer>
 
 </main>
+
+<script>
+  // Simple ScrollSpy for Sidebar
+  const sections = document.querySelectorAll('section');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '-50% 0px -50% 0px',
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href') === `#${entry.target.id}`) {
+            item.classList.add('active');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => observer.observe(section));
+</script>
 </body>
 </html>
