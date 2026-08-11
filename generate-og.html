@@ -8,22 +8,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-  body {
-    background: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  html, body {
     margin: 0;
+    padding: 0;
+    width: 1200px;
+    height: 630px;
+    background: #333;
+    overflow: hidden;
   }
   #og-container {
     width: 1200px;
     height: 630px;
     background-color: #0A0A0A;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     box-sizing: border-box;
     padding: 40px;
-    overflow: hidden;
+    transform-origin: top left;
   }
   .card {
     width: 100%;
@@ -46,6 +48,8 @@
     color: #A1A1AA;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    width: 100%;
+    white-space: nowrap;
   }
   .main-text {
     font-family: 'Bricolage Grotesque', sans-serif;
@@ -102,14 +106,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
   window.onload = () => {
+    // Force scale so mobile screens don't mess up DPR
     setTimeout(() => {
-      html2canvas(document.querySelector("#og-container"), { scale: 1 }).then(canvas => {
+      html2canvas(document.querySelector("#og-container"), { 
+        scale: 1,
+        width: 1200,
+        height: 630,
+        windowWidth: 1200,
+        windowHeight: 630
+      }).then(canvas => {
         const link = document.createElement('a');
         link.download = 'og-image.png';
         link.href = canvas.toDataURL('image/png');
         link.click();
       });
-    }, 1000); // Wait for fonts to load
+    }, 1500); // Wait for fonts to load
   };
 </script>
 
