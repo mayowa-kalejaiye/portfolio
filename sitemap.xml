@@ -37,6 +37,12 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://mayowa-kalejaiye.vercel.app/projects/waypoint.html</loc>
+        <lastmod>2026-08-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
         <loc>https://mayowa-kalejaiye.vercel.app/projects/closetai.html</loc>
         <lastmod>2026-08-11</lastmod>
         <changefreq>monthly</changefreq>

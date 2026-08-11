@@ -1,6 +1,6 @@
 (function () {
   function init() {
-    var images = Array.prototype.slice.call(document.querySelectorAll('.case-hero-image img, .gallery-item img, [data-lightbox]'));
+    var images = Array.prototype.slice.call(document.querySelectorAll('.case-hero-image img, .gallery-item img, .case-thumb img, [data-lightbox]'));
     if (!images.length) return;
 
     var overlay = document.createElement('div');
