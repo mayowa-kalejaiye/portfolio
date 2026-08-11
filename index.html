@@ -863,7 +863,7 @@
 
     <h2 class="hero-headline">I engineer scalable<br/>systems and real-time<br/>AI infrastructure.</h2>
 
-    <p class="text-body">I work across backend engineering and applied AI&mdash;turning complex product requirements into high-throughput APIs, real-time engines and production-grade LLM integrations. Most of it ends up on <a href="https://github.com/mayowa-kalejaiye" target="_blank" rel="noopener noreferrer" class="link-underline">GitHub</a>. When an architecture decision won&rsquo;t leave me alone, I think out loud about it on <a href="https://x.com/MayowaSWE" target="_blank" rel="noopener noreferrer" class="link-underline">X</a>. The more formal telling lives on <a href="https://www.linkedin.com/in/mayowa-kalejaiye/" target="_blank" rel="noopener noreferrer" class="link-underline">LinkedIn</a>, and if you&rsquo;d rather skip the scrolling, the whole thing fits on <a href="./Oluwamayowa-Kalejaiye-CV.pdf" target="_blank" rel="noopener noreferrer" class="link-underline">my CV</a>.</p>
+    <p class="text-body">I help companies design and implement their high-level technical decisions across the software stack&mdash;backend systems, real-time infrastructure, and applied AI. Most of my code ends up committed to <a href="https://github.com/mayowa-kalejaiye" target="_blank" rel="noopener noreferrer" class="link-underline">GitHub</a>. On <a href="https://x.com/MayowaSWE" target="_blank" rel="noopener noreferrer" class="link-underline">X</a> I build in public and talk to other engineers in the open&mdash;sharing work as it lands, not just polished announcements. The more formal write-ups live on <a href="https://www.linkedin.com/in/mayowa-kalejaiye/" target="_blank" rel="noopener noreferrer" class="link-underline">LinkedIn</a>. And if you&rsquo;d rather skip the reading, the whole thing fits on <a href="./Oluwamayowa-Kalejaiye-CV.pdf" target="_blank" rel="noopener noreferrer" class="link-underline">my CV</a>.</p>
   </section>
 
   <section id="work">
@@ -1029,22 +1029,6 @@
       <div class="exp-item">
         <div>
           <div class="exp-role">AI Systems Engineer</div>
-          <div class="exp-company">Tradeoff</div>
-          <div class="exp-desc">
-            <p>Architected an AI-powered technical feasibility advisor that acts as a Staff Engineer for startups&mdash;automating due diligence and uncovering existential risks before they become expensive.</p>
-            <p>Built a deterministic architecture graph that evaluates competing system constraints to generate defensible tech stacks, capability requirements and tradeoff analyses.</p>
-          </div>
-        </div>
-        <div class="exp-meta">
-          <span>Feb 2026 &mdash; Present</span>
-          <span>Lagos, Nigeria</span>
-          <span class="exp-badge current">Current</span>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div>
-          <div class="exp-role">AI Systems Engineer</div>
           <div class="exp-company">Zummit Africa</div>
           <div class="exp-desc">
             <p>Built AI-driven systems automating legal document classification and prioritization, driving large efficiency gains across internal operations.</p>
@@ -1087,6 +1071,22 @@
           <span>Apr 2025 &mdash; Aug 2025</span>
           <span>Lagos, Nigeria</span>
           <span class="exp-badge">5 mos</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-role">Backend Developer</div>
+          <div class="exp-company">HealthTech for Africans &times; Alabama A&amp;M University</div>
+          <div class="exp-desc">
+            <p>Extended backend features for health reporting and resource coordination tools.</p>
+            <p>Designed RESTful APIs supporting data collection and cross-system integration.</p>
+            <p>Worked in agile cycles with an international, cross-functional team.</p>
+          </div>
+        </div>
+        <div class="exp-meta">
+          <span>Sep 2024 &mdash; Jul 2025</span>
+          <span class="exp-badge">11 mos</span>
         </div>
       </div>
 
@@ -1204,6 +1204,7 @@
 
 <script>
   const dashes = Array.from(document.querySelectorAll('.nav-line, .nav-spacer-line'));
+  const navDashes = Array.from(document.querySelectorAll('.nav-line'));
 
   function updateSidebar() {
     const scrollTop = window.scrollY;
@@ -1211,13 +1212,24 @@
     const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) : 0;
     const activeIndex = Math.min(Math.floor(scrollPercent * dashes.length), dashes.length - 1);
 
+    let nearestDist = Infinity;
+    let activeDashIndex = dashes.indexOf(navDashes[0]);
+    navDashes.forEach((navDash) => {
+      const idx = dashes.indexOf(navDash);
+      const d = Math.abs(idx - activeIndex);
+      if (d < nearestDist) {
+        nearestDist = d;
+        activeDashIndex = idx;
+      }
+    });
+
     dashes.forEach((dash, index) => {
       const distance = Math.abs(index - activeIndex);
       dash.style.transform = '';
       dash.style.backgroundColor = '';
       dash.style.height = '';
 
-      if (distance === 0) {
+      if (index === activeDashIndex) {
         dash.style.transform = 'scaleX(0.36)';
         dash.style.backgroundColor = 'var(--accent)';
         dash.style.height = '2px';
