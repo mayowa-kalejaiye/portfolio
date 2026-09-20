@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Failures — Case Study — Mayowa Kalejaiye</title>
+<meta name="description" content="Case study: Failures — deterministic MCP server for AI-built software. 13 tools, 11 failure dimensions, AST-verified with zero tokens. Built by Mayowa Kalejaiye.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Failures — Case Study — Mayowa Kalejaiye">
+<meta property="og:description" content="Case study: Failures — deterministic MCP server for AI-built software. 13 tools, 11 failure dimensions, AST-verified with zero tokens.">
+<meta property="og:url" content="https://mayowa-kalejaiye.vercel.app/projects/failures.html">
+<meta property="og:image" content="https://mayowa-kalejaiye.vercel.app/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+
+<script>
+(function(){try{var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark';}})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/case.css">
+</head>
+<body>
+
+<header class="case-top">
+  <a class="brand" href="../index.html">Mayowa Kalejaiye</a>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+    <svg class="icon icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+    <svg class="icon icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+  </button>
+</header>
+
+<main class="case-main">
+  <a class="back-link" href="../index.html">&larr; Back to portfolio</a>
+
+  <div class="case-sub">Case Study &middot; Developer Tooling &middot; MCP</div>
+  <h1 class="case-title">Failures</h1>
+  <p class="case-description">A deterministic MCP server that makes coding agents reason about failure modes&mdash;via AST checks with line evidence and confidence scores, not prompts. 13 tools, 11 failure dimensions, 50+ cataloged modes. Zero tokens, zero hallucination.</p>
+
+  <div class="case-links">
+    <a class="case-link" href="https://github.com/mayowa-kalejaiye/Failures" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
+    <a class="case-link" href="https://pypi.org/project/failures-mcp/" target="_blank" rel="noopener noreferrer">PyPI &nearr;</a>
+  </div>
+
+  <div class="case-tags">
+    <span class="case-tag">Python</span>
+    <span class="case-tag">MCP</span>
+    <span class="case-tag">AST Analysis</span>
+    <span class="case-tag">Developer Tooling</span>
+    <span class="case-tag">AI Agents</span>
+  </div>
+
+  <div class="case-hero-image">
+    <img src="../images/fa1.png" alt="Failures MCP">
+  </div>
+
+  <div class="gallery">
+    <div class="gallery-item"><img src="../images/fa2.png" alt="Failures framework comparison"></div>
+    <div class="gallery-item"><img src="../images/fa3.png" alt="Failures benchmark results"></div>
+    <div class="gallery-item"><img src="../images/fa4.png" alt="Failures infrastructure"></div>
+  </div>
+
+  <div class="case-body">
+
+    <section class="case-section">
+      <h2 class="case-h2">Context</h2>
+      <p class="case-p">Coding agents write happy-path code because their training data is happy-path tutorials. They don&rsquo;t ask what happens if the provider succeeds but the response is lost, whether a call can be retried safely, or what breaks when two requests modify the same record concurrently. The result is code that works in demos and falls apart in production&mdash;partial commits, phantom retries, lost updates, split-brains.</p>
+    </section>
+
+    <section class="case-section">
+      <h2 class="case-h2">What I built</h2>
+      <p class="case-p">A Model Context Protocol server that intercepts autonomous coding agents and enforces <strong>11 engineering invariants</strong>&mdash;atomicity, idempotency, timeout/ambiguous outcome, concurrency, ordering, consistency, availability, resource exhaustion, recovery, observability, and retry safety&mdash;checked deterministically before code ships. The engine uses <strong>Abstract Syntax Tree traversal</strong> for evidence extraction and honest confidence scoring (0.0 to 1.0) with line-level evidence. No token spend, no hallucination.</p>
+      <p class="case-p">It ships with <strong>13 core MCP tools</strong> including <code>review_code</code>, <code>review_plan</code>, <code>check_invariant</code>, and automated test generation. The knowledge base catalogs <strong>50+ concrete failure modes</strong> (partial commits, phantom retries, lost updates, OOMs, poison pills, split-brains) and maps them to engineering patterns&mdash;transactional outboxes, circuit breakers, optimistic locks, dead-letter queues.</p>
+    </section>
+
+    <section class="case-section">
+      <h2 class="case-h2">Why this approach</h2>
+      <p class="case-p">Prompting an LLM to &ldquo;think about edge cases&rdquo; produces different results every time, misses failure modes it hasn&rsquo;t seen in training data, and burns tokens on every call. By keeping the engine deterministic and AST-based, Failures gives the same answer to the same code every time&mdash;with zero cost per check and zero chance of hallucinated findings. The framework compares naive LLM generation against Failures-verified code across atomicity, concurrency, ordering, and timeout dimensions.</p>
+    </section>
+
+    <section class="case-section">
+      <h2 class="case-h2">Role &amp; scope</h2>
+      <p class="case-p">End-to-end: the failure taxonomy, the AST analysis engine, the confidence calibration system, the MCP server integration, the benchmark harness, the knowledge graph of principles &rarr; failure modes &rarr; patterns &rarr; tests, and the documentation site with interactive labs.</p>
+    </section>
+
+    <section class="case-section">
+      <h2 class="case-h2">Result</h2>
+
+      <div class="case-metrics">
+        <div class="metric"><div class="metric-value">24/24</div><div class="metric-label">adversarial scenarios detected</div></div>
+        <div class="metric"><div class="metric-value">13</div><div class="metric-label">MCP tools shipped</div></div>
+        <div class="metric"><div class="metric-value"><span class="accent">0 ms</span></div><div class="metric-label">AST, no tokens, no hallucination</div></div>
+        <div class="metric"><div class="metric-value">11/11</div><div class="metric-label">failure dimensions covered</div></div>
+      </div>
+
+      <p class="case-p">Tested against <strong>24 adversarial scenarios</strong> across payments, inventory, webhooks, uploads, and queues plus 6 live agent evaluations&mdash;100% detection rate. Works with Claude Code, Cursor, Cline, Windsurf, and all MCP clients. Published on PyPI as <code>failures-mcp</code> with a single install command.</p>
+
+      <p class="case-p">The benchmark reduced critical findings from 3 to 0 on payment flows, eliminated queue failures with dead-letter queue patterns, and demonstrated that deterministic AST checks outperform prompt-based reviews on every dimension&mdash;while costing exactly zero tokens per analysis.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="case-footer">
+  <span>&copy; 2026 Mayowa Kalejaiye</span>
+  <a class="back-link" href="#" style="margin-bottom: 0;">Back to top &uarr;</a>
+</footer>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+</script>
+<script src="../assets/js/case-lightbox.js" defer></script>
+</body>
+</html>
