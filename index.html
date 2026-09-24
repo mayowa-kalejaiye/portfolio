@@ -1334,46 +1334,20 @@
 <script>
   const track = document.querySelector('.track-wrap');
   if (track) {
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    let isDragging = false;
-    
-    track.addEventListener('mousedown', (e) => {
-      isDown = true;
-      isDragging = false;
-      track.style.cursor = 'grabbing';
-      startX = e.pageX - track.offsetLeft;
-      scrollLeft = track.scrollLeft;
-    });
-    
-    track.addEventListener('mouseleave', () => {
-      isDown = false;
-      track.style.cursor = 'default';
-    });
-    
-    track.addEventListener('mouseup', () => {
-      isDown = false;
-      track.style.cursor = 'default';
-    });
-    
-    track.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - track.offsetLeft;
-      const walk = (x - startX) * 2; // Scroll-fast
-      if (Math.abs(walk) > 10) {
-        isDragging = true;
+    track.addEventListener('wheel', (e) => {
+      // If we are scrolling vertically and not holding shift
+      if (e.deltaY !== 0 && !e.shiftKey) {
+        // Prevent default vertical scroll ONLY if the track can actually scroll horizontally
+        const atLeft = track.scrollLeft === 0;
+        const atRight = track.scrollLeft >= (track.scrollWidth - track.clientWidth - 1);
+        
+        // If scrolling right and we haven't reached the end, or scrolling left and haven't reached the start
+        if ((e.deltaY > 0 && !atRight) || (e.deltaY < 0 && !atLeft)) {
+          e.preventDefault();
+          track.scrollLeft += e.deltaY;
+        }
       }
-      track.scrollLeft = scrollLeft - walk;
     });
-
-    track.addEventListener('click', (e) => {
-      if (isDragging) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    }, true);
   }
 </script>
 </body>
