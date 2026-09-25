@@ -37,17 +37,23 @@ I'm a software and AI engineer based in Lagos, Nigeria, specializing in:
 
 ## 💼 Work Experience
 
-- **AI Engineering Intern** @ Zummit Africa (Sep 2025 - Jan 2026)
+- **AI Intern** @ Zummit Africa (Sep 2025 - Jul 2026) — Nigeria, Remote
   - AI-driven legal document classification and prioritization
   - ML pipeline deployment and real-time API optimization
+  - Independently developed and published *Failures*, a deterministic MCP server
+    evaluating AI coding agents ([paper](https://doi.org/10.5281/zenodo.22966362))
 
-- **Frontend Developer** @ TLCC.ng (Oct 2025 - Jan 2026)
-  - Full frontend platform development with responsive UI
-  - Backend API integration for dynamic content
+- **Lead Frontend Engineer** @ tlcc.ng (Oct 2025 - Sep 2026) — Ikeja, Lagos
+  - Owned frontend platform architecture as sole engineer
+  - Backend API integration with real-time content delivery
 
-- **Backend Engineering Lead** @ CuratED - TCU 7.0 (Apr 2025 - Aug 2025)
+- **Backend Engineering Lead** @ Techies Collab — CuratED, TCU 7.0 (Apr 2025 - Aug 2025) — Nigeria
   - Designed scalable Django REST APIs
   - Led architectural decisions and code quality standards
+
+- **Backend Developer** @ HealthTech for Africans × Alabama A&M University (Sep 2024 - Nov 2024) — Nigeria, Remote
+  - RESTful APIs for health reporting and resource coordination
+  - International project led by a US-based team; agile collaboration across time zones
 
 ## 🛠 Tech Stack
 
